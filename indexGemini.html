@@ -7,9 +7,9 @@
   <style>
     canvas {
         border: 1px solid black;
-        height: 75vh;
-        width: auto;
-		max-width: 98vw;
+        /* height: 75vh; */
+        /* width: auto; */
+        /* max-width: 98vw; */
         display: block;
         margin: auto;
     }
@@ -17,15 +17,15 @@
 </head>
 <body>
   <h1>Cargador de imágenes</h1>
-  <input type="file" id="file-input" accept="image/*">
-  <div id="mensajes">&nbsp;</div>
-  <canvas id="canvas"></canvas>
   <div class="botones">
     <button id="btn-zoom-in">Acercar</button>
     <button id="btn-zoom-out">Alejar</button>
     <button id="btn-mover">Mover imagen</button>
     <button id="btn-dibujar">Dibujar recuadro</button>
+    <input type="file" id="file-input" accept="image/*">
   </div>
+  <div id="mensajes">&nbsp;</div>
+  <canvas id="canvas"></canvas>
   <script src="script.js"></script>
 </body>
 </html>

@@ -15,6 +15,7 @@ let isDrawing = false;
 let startPoint = null;
 let img;
 let rect = null;
+let imageAspectRatio = 1;
 
 fileInput.addEventListener("change", (e) => {
 	const file = e.target.files[0];
@@ -23,9 +24,12 @@ fileInput.addEventListener("change", (e) => {
 		img = new Image();
 		img.onload = () => {
 			const pageHeight = window.innerHeight;
-			const canvasHeight = pageHeight * 0.8;
-			const imageAspectRatio = img.width / img.height;
-			const canvasWidth = canvasHeight * imageAspectRatio;
+			// const canvasHeight = pageHeight * 0.8;
+			imageAspectRatio = img.width / img.height;
+			// const canvasWidth = canvasHeight * imageAspectRatio;
+
+			const canvasWidth = img.width;
+			const canvasHeight = img.height;
 
 			canvas.width = canvasWidth;
 			canvas.height = canvasHeight;
@@ -55,6 +59,7 @@ zoomOutBtn.addEventListener("click", () => {
 moverBtn.addEventListener("click", () => {
 	isDrawing = false;
 	startPoint = null;
+	dibujarBtn.classList.remove("activo");
 	moverBtn.classList.toggle("activo");
 
 	if (moverBtn.classList.contains("activo")) {
@@ -65,10 +70,14 @@ moverBtn.addEventListener("click", () => {
 });
 
 dibujarBtn.addEventListener("click", () => {
-	dibujarBtn.classList.add("activo");
 	moverBtn.classList.remove("activo");
+	dibujarBtn.classList.toggle("activo");
 
-	mensajes.innerHTML = "Dibujar recuadro";
+	if (dibujarBtn.classList.contains("activo")) {
+		mensajes.innerHTML = "Dibujar recuadro";
+	} else {
+		mensajes.innerHTML = "&nbsp;";
+	}
 });
 
 canvas.addEventListener("mousedown", (e) => {
@@ -77,9 +86,13 @@ canvas.addEventListener("mousedown", (e) => {
 		ctx.clearRect(0, 0, canvas.width, canvas.height);
 		renderImage();
 
+		// startPoint = {
+		// 	x: (e.offsetX * zoom) - offsetX,
+		// 	y: (e.offsetY * zoom) - offsetY
+		// };
 		startPoint = {
-			x: (e.offsetX * 1) - offsetX + (9 * zoom / 2),
-			y: (e.offsetY * 1) - offsetY + (9 * zoom / 2)
+			x: e.offsetX,
+			y: e.offsetY
 		};
 	} else if (moverBtn.classList.contains("activo")) {
 		startPoint = {
@@ -93,9 +106,13 @@ canvas.addEventListener("mousedown", (e) => {
 
 canvas.addEventListener("mousemove", (e) => {
 	if (isDrawing) {
+		// const currentPoint = {
+		// 	x: (e.offsetX * zoom) - offsetX,
+		// 	y: (e.offsetY * zoom) - offsetY
+		// };
 		const currentPoint = {
-			x: (e.offsetX * 1) - offsetX + (9 * zoom / 2),
-			y: (e.offsetY * 1) - offsetY + (9 * zoom / 2)
+			x: e.offsetX,
+			y: e.offsetY
 		};
 		// console.log(currentPoint);
 
@@ -116,8 +133,6 @@ canvas.addEventListener("mousemove", (e) => {
 		if (Math.abs(offsetY) >= (img.height - 50)) {
 			offsetY = offsetY < 0 ? 0 - (img.height - 50) : img.height - 50;
 		}
-		console.log('offsetY: ' + offsetY);
-		console.log('offsetX: ' + offsetX);
 			
 		renderImage(true);
 		
@@ -132,21 +147,38 @@ canvas.addEventListener("mouseup", (e) => {
 	if (isDrawing) {
 		isDrawing = false;
 		// dibujarBtn.classList.remove("activo");
+		// const endPoint = {
+		// 	x: e.offsetX / zoom - offsetX,
+		// 	y: e.offsetY / zoom - offsetY
+		// };
 		const endPoint = {
-			x: e.offsetX / zoom - offsetX,
-			y: e.offsetY / zoom - offsetY,
+			x: e.offsetX,
+			y: e.offsetY
 		};
 		const width = endPoint.x - startPoint.x;
 		const height = endPoint.y - startPoint.y;
 
-		rect = { x: startPoint.x, y: startPoint.y, w: width, h: height};
+		rect = { 
+			x: startPoint.x - offsetX,
+			y: startPoint.y - offsetY,
+			imgX: startPoint.x + offsetX,
+			imgY: startPoint.y + offsetY,
+			w: width, 
+			h: height,
+			coefZoom: 1
+		};
 
 		console.log(`Coordenadas: (${startPoint.x}, ${startPoint.y})`);
 		console.log(`Dimensiones: ${width}x${height}`);
+		console.log('Rect: ' + JSON.stringify(rect));
 	} 
 	else if (moverBtn.classList.contains("activo")) {
 		// moverBtn.classList.remove("activo");
 		startPoint = null;
+
+		console.log('offsetX: ' + offsetX);
+		console.log('offsetY: ' + offsetY);
+		console.log('Rect: ' + JSON.stringify(rect));
 	}
 });
 
@@ -167,7 +199,24 @@ function renderImage(withRect = false) {
 	if (withRect && rect != null) {
 		ctx.strokeStyle = "red";
 		ctx.beginPath();
-		ctx.moveTo(rect.x, rect.y);
+		
+		// Seteo la nueva posicion del recuadro
+		if (zoom != zoomOld) {
+			// Si cambia el zoom
+			rect.coefZoom = (zoom / zoomOld);
+			rect.x = rect.x * rect.coefZoom;
+			rect.y = rect.y * rect.coefZoom;
+			rect.w = rect.w * rect.coefZoom;
+			rect.h = rect.h * rect.coefZoom;
+
+			zoomOld = zoom;
+		}
+		else {
+			// Si se movio la imagen
+			rect.x = (rect.imgX - offsetX) * rect.coefZoom;
+			rect.y = (rect.imgY - offsetY) * rect.coefZoom;
+		}
+		
 		ctx.strokeRect(rect.x, rect.y, rect.w, rect.h);
 	}
 }
