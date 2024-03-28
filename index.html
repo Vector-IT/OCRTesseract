@@ -1,20 +1,31 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-  <title>Image Selection</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cargador de imágenes con zoom y dibujo</title>
   <style>
-    #canvas {
-      border: 2px solid #000;
+    canvas {
+        border: 1px solid black;
+        /* height: 75vh; */
+        /* width: auto; */
+        /* max-width: 98vw; */
+        display: block;
+        margin: auto;
     }
-  </style>
+</style>
 </head>
 <body>
-  <h2>Select an area from the image</h2>
-  <div>
-    <label for="dibujar"><input type="checkbox" id="dibujar"> Dibujar</label>
+  <h1>Cargador de imágenes</h1>
+  <div class="botones">
+    <button id="btn-zoom-in">Acercar</button>
+    <button id="btn-zoom-out">Alejar</button>
+    <button id="btn-mover">Mover imagen</button>
+    <button id="btn-dibujar">Dibujar recuadro</button>
+    <input type="file" id="file-input" accept="image/*">
   </div>
+  <div id="mensajes">&nbsp;</div>
   <canvas id="canvas"></canvas>
-  <img id="image" src="1.jpg" style="display: none;">
-  <script src="script2.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
