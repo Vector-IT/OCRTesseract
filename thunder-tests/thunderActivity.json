@@ -1,0 +1,36 @@
+[
+  {
+    "_id": "e59fc398-c21e-48f8-b23e-b4c469371cf5",
+    "colId": "history",
+    "containerId": "",
+    "name": "https://desarrollo.vector-it.com.ar/OCRTesseract/",
+    "url": "https://desarrollo.vector-it.com.ar/OCRTesseract/",
+    "method": "POST",
+    "sortNum": 0,
+    "created": "2024-05-26T04:12:28.602Z",
+    "modified": "2024-05-26T05:07:06.186Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "formdata",
+      "raw": "",
+      "form": [
+        {
+          "name": "language",
+          "value": "por"
+        },
+        {
+          "name": "preserve_spaces",
+          "value": "1"
+        }
+      ],
+      "files": [
+        {
+          "name": "file",
+          "value": "..\\files\\e-Social - Relação de eventos CNPJ 17.pdf"
+        }
+      ]
+    },
+    "tests": []
+  }
+]
