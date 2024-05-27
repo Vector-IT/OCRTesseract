@@ -9,6 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
 
 	$language = $_POST['language'] ?? 'eng';
 	$preserve_spaces = $_POST['preserve_spaces'] ?? 0;
+	$page_segmentation = $_POST['page_segmentation'] ?? 3;
 	
 	$allowedExts = array("pdf");
 
@@ -50,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
 
 						$image = new \Imagick();
 
-						$image->setResolution(400, 400);
+						$image->setResolution(450, 450);
 
 						$image->readImage($myurl);
 
@@ -79,8 +80,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
 
 					// READ ENTIRE FILE
 					if (PHP_OS == 'WINNT') {
-						// exec('"C:\Program Files\Tesseract-OCR\tesseract.exe" "'.$archivo.'" stdout --psm 6 -c preserve_interword_spaces=1 -l '.$language, $output);
-						exec('"C:\Program Files\Tesseract-OCR\tesseract.exe" "'.$archivo.'" stdout --psm 6 -c preserve_interword_spaces='.$preserve_spaces.' -l '.$language, $output);
+						exec('"C:\Program Files\Tesseract-OCR\tesseract.exe" "'.$archivo.'" stdout --psm '.$page_segmentation.' -c preserve_interword_spaces='.$preserve_spaces.' -l '.$language, $output);
 					}
 					else {
 						exec('tesseract "'.$archivo.'" stdout', $output);
