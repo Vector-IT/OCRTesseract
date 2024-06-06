@@ -42,7 +42,7 @@
     "method": "POST",
     "sortNum": 0,
     "created": "2024-05-27T01:08:51.471Z",
-    "modified": "2024-05-27T01:56:03.483Z",
+    "modified": "2024-06-05T21:35:16.418Z",
     "headers": [],
     "params": [],
     "body": {
@@ -51,21 +51,31 @@
       "form": [
         {
           "name": "language",
-          "value": "por"
+          "value": "por",
+          "isDisabled": true
         },
         {
           "name": "preserve_spaces",
-          "value": "0"
+          "value": "0",
+          "isDisabled": true
         },
         {
           "name": "page_segmentation",
-          "value": "6"
+          "value": "4"
+        },
+        {
+          "name": "resolution",
+          "value": "200"
+        },
+        {
+          "name": "debug",
+          "value": "1"
         }
       ],
       "files": [
         {
           "name": "file",
-          "value": "..\\files\\e-Social - Relação de eventos CNPJ 1.pdf"
+          "value": "..\\files\\AC 110-07.pdf"
         }
       ]
     },

@@ -1,0 +1,24 @@
+{"status":"success","file":"AC 110-07.pdf"}
+[2024-06-05 17:57:57] {"status":"success","file":"AC 110-07.pdf"}
+[2024-06-05 18:00:27] {"status":"success","file":"AC 110-07.pdf"}
+[2024-06-05 18:01:10] {"status":"success","file":"AC 110-07.pdf"}
+[2024-06-05 18:02:28] {"status":"success","file":"AC 110-07.pdf"}
+[2024-06-05 18:03:24] {"status":"success","file":"AC 110-07.pdf"}
+[2024-06-05 18:03:33] {"status":"success","file":"AC 110-07.pdf"}
+[2024-06-05 18:19:14] Params: {"language":"por","preserve_spaces":"0","page_segmentation":"1","resolution":"200"} | Response: {"status":"success","file":"AC 110-07.pdf"}
+[2024-06-05 18:20:16] IP: 127.0.0.1 Params: {"page_segmentation":"1","resolution":"200","debug":"1"} | Response: {"status":"success","file":"AC 110-07.pdf","timeConversion":"1.393secs","timeReading":"3.152secs","totalTime":"4.545secs"}
+[2024-06-05 18:22:46] IP: 127.0.0.1 | Params: {"page_segmentation":"1","resolution":"200","debug":"1"} | Response: {"status":"success","file":"AC 110-07.pdf","timeConversion":"80.263secs","timeReading":"3.184secs","totalTime":"83.447secs"}
+[2024-06-05 18:22:59] IP: 127.0.0.1 | Params: {"page_segmentation":"1","resolution":"200","debug":"1"} | Response: {"status":"success","file":"AC 110-07.pdf","timeConversion":"3.595secs","timeReading":"3.137secs","totalTime":"6.732secs"}
+[2024-06-05 18:23:27] IP: 127.0.0.1 | Params: {"page_segmentation":"1","resolution":"200","debug":"1"} | Response: {"status":"success","file":"AC 110-07.pdf","timeConversion":"1.322secs","timeReading":"2.783secs","totalTime":"4.105secs"}
+[2024-06-05 18:26:49] IP: 127.0.0.1 | Params: {"page_segmentation":"1","resolution":"200","debug":"1"} | Response: {"status":"success","file":"e-Social - Rela\u00e7\u00e3o de eventos CNPJ 2.pdf","timeConversion":"0.783secs","timeReading":"2.663secs","totalTime":"3.446secs"}
+[2024-06-05 18:27:48] IP: 127.0.0.1 | Params: {"page_segmentation":"3","resolution":"200","debug":"1"} | Response: {"status":"success","file":"e-Social - Rela\u00e7\u00e3o de eventos CNPJ 2.pdf","timeConversion":"0.779secs","timeReading":"1.879secs","totalTime":"2.658secs"}
+[2024-06-05 18:28:10] IP: 127.0.0.1 | Params: {"page_segmentation":"0","resolution":"200","debug":"1"} | Response: {"status":"success","file":"e-Social - Rela\u00e7\u00e3o de eventos CNPJ 2.pdf","timeConversion":"0.781secs","timeReading":"0.179secs","totalTime":"0.96secs"}
+[2024-06-05 18:28:22] IP: 127.0.0.1 | Params: {"page_segmentation":"1","resolution":"200","debug":"1"} | Response: {"status":"success","file":"e-Social - Rela\u00e7\u00e3o de eventos CNPJ 2.pdf","timeConversion":"0.758secs","timeReading":"2.607secs","totalTime":"3.365secs"}
+[2024-06-05 18:28:48] IP: 127.0.0.1 | Params: {"page_segmentation":"7","resolution":"200","debug":"1"} | Response: {"status":"success","file":"e-Social - Rela\u00e7\u00e3o de eventos CNPJ 2.pdf","timeConversion":"0.769secs","timeReading":"0.31secs","totalTime":"1.079secs"}
+[2024-06-05 18:28:58] IP: 127.0.0.1 | Params: {"page_segmentation":"5","resolution":"200","debug":"1"} | Response: {"status":"success","file":"e-Social - Rela\u00e7\u00e3o de eventos CNPJ 2.pdf","timeConversion":"0.76secs","timeReading":"3.107secs","totalTime":"3.867secs"}
+[2024-06-05 18:29:07] IP: 127.0.0.1 | Params: {"page_segmentation":"4","resolution":"200","debug":"1"} | Response: {"status":"success","file":"e-Social - Rela\u00e7\u00e3o de eventos CNPJ 2.pdf","timeConversion":"0.752secs","timeReading":"1.889secs","totalTime":"2.641secs"}
+[2024-06-05 18:34:01] IP: 127.0.0.1 | Params: {"page_segmentation":"5","resolution":"200","debug":"1"} | Response: {"status":"success","file":"e-Social - Rela\u00e7\u00e3o de eventos CNPJ 2.pdf","timeConversion":"0.815secs","timeReading":"3.162secs","totalTime":"3.977secs"}
+[2024-06-05 18:34:09] IP: 127.0.0.1 | Params: {"page_segmentation":"4","resolution":"200","debug":"1"} | Response: {"status":"success","file":"e-Social - Rela\u00e7\u00e3o de eventos CNPJ 2.pdf","timeConversion":"0.83secs","timeReading":"1.886secs","totalTime":"2.716secs"}
+[2024-06-05 18:34:25] IP: 127.0.0.1 | Params: {"page_segmentation":"4","resolution":"200","debug":"1"} | Response: {"status":"success","file":"AC 110-07.pdf","timeConversion":"1.078secs","timeReading":"2.192secs","totalTime":"3.27secs"}
+[2024-06-05 18:34:58] IP: 127.0.0.1 | Params: {"page_segmentation":"4","resolution":"300","debug":"1"} | Response: {"status":"success","file":"AC 110-07.pdf","timeConversion":"1.815secs","timeReading":"2.681secs","totalTime":"4.496secs"}
+[2024-06-05 18:35:16] IP: 127.0.0.1 | Params: {"page_segmentation":"4","resolution":"200","debug":"1"} | Response: {"status":"success","file":"AC 110-07.pdf","timeConversion":"0.994secs","timeReading":"2.02secs","totalTime":"3.014secs"}

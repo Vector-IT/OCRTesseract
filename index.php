@@ -1,15 +1,20 @@
 <?php
-
 header('Content-Type: application/json');
 header('Application: Vector PDF Reader');
 
-// Verifica si hay archivos en la petición
+define('default_lang', 'por');
+define('default_preserve_spaces', 0);
+define('default_page_segmentation', 3);
+define('default_resolution', 500);
+
+// Verifica si es un POST y si hay archivos en la petición
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
 	$file = $_FILES['file'];
 
-	$language = $_POST['language'] ?? 'eng';
-	$preserve_spaces = $_POST['preserve_spaces'] ?? 0;
-	$page_segmentation = $_POST['page_segmentation'] ?? 3;
+	$language = $_POST['language'] ?? default_lang;
+	$preserve_spaces = $_POST['preserve_spaces'] ?? default_preserve_spaces;
+	$page_segmentation = $_POST['page_segmentation'] ?? default_page_segmentation;
+	$resolution = $_POST['resolution'] ?? default_resolution;
 	
 	$allowedExts = array("pdf");
 
@@ -42,17 +47,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
 			// Mueve el archivo subido a la ubicación final
 			if (move_uploaded_file($file['tmp_name'], $uploadFile)) {
 				try {
-					$horaInicio = microtime(true);
-
 					if ($extension == 'pdf') {
+						$horaInicio = microtime(true);
 						$pagenumber = 0;
 
 						$myurl = $uploadFile.'['.$pagenumber.']';
 
 						$image = new \Imagick();
-
-						$image->setResolution(450, 450);
-
+						
+						$image->setResolution($resolution, $resolution);
 						$image->readImage($myurl);
 
 						// Flatten all the images - prevent black background
@@ -62,13 +65,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
 						// $image->setImageFormat( "png" );
 
 						$image->setImageCompression(\Imagick::COMPRESSION_JPEG);
-						$image->setImageCompressionQuality(100);
+						$image->setImageCompressionQuality(50);
 
 						$archivo = $uploadDir.str_ireplace($extension, 'jpg', basename($file['name']));
 						$image->writeImage($archivo);
 
 						$image->clear();
 						$image->destroy();
+
+						$horaFin = microtime(true);
+						$timeConversion = round($horaFin - $horaInicio, 3);
 					}
 					else {
 						$archivo = $uploadFile;
@@ -79,6 +85,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
 					$datos = [];
 
 					// READ ENTIRE FILE
+					$horaInicio = microtime(true);
 					if (PHP_OS == 'WINNT') {
 						exec('"C:\Program Files\Tesseract-OCR\tesseract.exe" "'.$archivo.'" stdout --psm '.$page_segmentation.' -c preserve_interword_spaces='.$preserve_spaces.' -l '.$language, $output);
 					}
@@ -87,15 +94,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
 					}
 
 					$horaFin = microtime(true);
+					$timeReading = round($horaFin - $horaInicio, 3);
 
-					$interval = round($horaFin - $horaInicio, 3);
+					$response = [];
+					$response['status'] = 'success';
+					$response['file'] = basename($file['name']);
 
-					$response = [
-						'status' => 'success',
-						'time' => $interval. 'secs',
-						'data' => $output
-					];
+					if (isset($_POST['debug']) && $_POST['debug'] == '1') {
+						$response['timeConversion'] = $timeConversion.'secs';
+						$response['timeReading'] = $timeReading.'secs';
+						$response['totalTime'] = ($timeConversion + $timeReading).'secs';
+					}
 
+					error_log('['.date('Y-m-d H:i:s').'] IP: '.$_SERVER['REMOTE_ADDR'].' | Params: '.json_encode($_POST).' | Response: '.json_encode($response).PHP_EOL, 3, 'logs.txt');
+
+					$response['data'] = $output;
 				}
 				finally {
 					if (file_exists($uploadFile)) {
@@ -109,12 +122,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
 			} else {
 				$response = [
 					'status' => 'error',
+					'file' => basename($file['name']),
 					'message' => 'Failed to move uploaded file'
 				];
 			}
 		} else {
 			$response = [
 				'status' => 'error',
+				'file' => basename($file['name']),
 				'message' => 'Extension not allowed'
 			];
 		}
@@ -122,6 +137,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
 	} else {
 		$response = [
 			'status' => 'error',
+			'file' => basename($file['name']),
 			'message' => 'File upload error: ' . $file['error']
 		];
 	}
