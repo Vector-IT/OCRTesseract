@@ -99,14 +99,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
 					$response = [];
 					$response['status'] = 'success';
 					$response['file'] = basename($file['name']);
-
+					
+					$log = $response;
+					
 					if (isset($_POST['debug']) && $_POST['debug'] == '1') {
 						$response['timeConversion'] = $timeConversion.'secs';
 						$response['timeReading'] = $timeReading.'secs';
 						$response['totalTime'] = ($timeConversion + $timeReading).'secs';
 					}
+					else {
+						$log['timeConversion'] = $timeConversion.'secs';
+						$log['timeReading'] = $timeReading.'secs';
+						$log['totalTime'] = ($timeConversion + $timeReading).'secs';
+					}
 
-					error_log('['.date('Y-m-d H:i:s').'] IP: '.$_SERVER['REMOTE_ADDR'].' | Params: '.json_encode($_POST).' | Response: '.json_encode($response).PHP_EOL, 3, 'logs.txt');
+					error_log('['.date('Y-m-d H:i:s').'] IP: '.$_SERVER['REMOTE_ADDR'].' | Params: '.json_encode($_POST).' | Response: '.json_encode($log).PHP_EOL, 3, 'logs.txt');
 
 					$response['data'] = $output;
 				}

@@ -3,12 +3,60 @@
     "_id": "6d3566d6-fecc-49dd-ade0-cae4bc2447ce",
     "colId": "bfc368ae-64f7-47af-8d85-6b2fef7429e5",
     "containerId": "",
-    "name": "API Call",
+    "name": "Read - Local",
     "url": "https://desarrollo.vector-it.com.ar/VectorPDF/",
     "method": "POST",
     "sortNum": 10000,
     "created": "2024-05-26T05:08:20.367Z",
     "modified": "2024-06-05T21:35:16.414Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "formdata",
+      "raw": "",
+      "form": [
+        {
+          "name": "language",
+          "value": "por",
+          "isDisabled": true
+        },
+        {
+          "name": "preserve_spaces",
+          "value": "0",
+          "isDisabled": true
+        },
+        {
+          "name": "page_segmentation",
+          "value": "4"
+        },
+        {
+          "name": "resolution",
+          "value": "200"
+        },
+        {
+          "name": "debug",
+          "value": "1"
+        }
+      ],
+      "files": [
+        {
+          "name": "file",
+          "value": "..\\files\\AC 110-07.pdf"
+        }
+      ]
+    },
+    "tests": []
+  },
+  {
+    "_id": "f0b9f707-33b4-46b8-864d-2904321cd33c",
+    "colId": "bfc368ae-64f7-47af-8d85-6b2fef7429e5",
+    "containerId": "",
+    "name": "Read - AWS",
+    "url": "http://vectorpdf.vector-it.com.ar/",
+    "method": "POST",
+    "sortNum": 20000,
+    "created": "2024-06-06T01:28:24.128Z",
+    "modified": "2024-06-06T01:28:43.694Z",
     "headers": [],
     "params": [],
     "body": {
