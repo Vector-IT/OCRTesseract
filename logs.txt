@@ -22,3 +22,9 @@
 [2024-06-05 18:34:25] IP: 127.0.0.1 | Params: {"page_segmentation":"4","resolution":"200","debug":"1"} | Response: {"status":"success","file":"AC 110-07.pdf","timeConversion":"1.078secs","timeReading":"2.192secs","totalTime":"3.27secs"}
 [2024-06-05 18:34:58] IP: 127.0.0.1 | Params: {"page_segmentation":"4","resolution":"300","debug":"1"} | Response: {"status":"success","file":"AC 110-07.pdf","timeConversion":"1.815secs","timeReading":"2.681secs","totalTime":"4.496secs"}
 [2024-06-05 18:35:16] IP: 127.0.0.1 | Params: {"page_segmentation":"4","resolution":"200","debug":"1"} | Response: {"status":"success","file":"AC 110-07.pdf","timeConversion":"0.994secs","timeReading":"2.02secs","totalTime":"3.014secs"}
+[2024-06-06 11:02:06] IP: 127.0.0.1 | Params: {"page_segmentation":"4","resolution":"200","debug":"1"} | Response: {"status":"success","file":"DAMSP - 10.2023.pdf"}
+[2024-06-06 11:06:10] IP: 127.0.0.1 | Params: {"page_segmentation":"4","resolution":"300","debug":"1"} | Response: {"status":"success","file":"DAMSP - 10.2023.pdf"}
+[2024-06-06 11:09:21] IP: 127.0.0.1 | Params: {"page_segmentation":"4","resolution":"300","debug":"1"} | Response: {"status":"success","file":"DAMSP - 10.2023.pdf"}
+[2024-06-06 11:09:31] IP: 127.0.0.1 | Params: {"page_segmentation":"4","resolution":"300","debug":"1"} | Response: {"status":"success","file":"AC 110-07.pdf"}
+[2024-06-06 11:09:48] IP: 127.0.0.1 | Params: {"page_segmentation":"4","resolution":"300","debug":"1"} | Response: {"status":"success","file":"DAMSP - 10.2023.pdf"}
+[2024-06-07 09:56:58] IP: 127.0.0.1 | Params: {"page_segmentation":"4","resolution":"300","debug":"1"} | Response: {"status":"success","file":"Azur.pdf"}
