@@ -53,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
 
 						$myurl = $uploadFile.'['.$pagenumber.']';
 
-						$image = new \Imagick();
+						$image = new Imagick();
 						
 						$image->setResolution($resolution, $resolution);
 						$image->readImage($myurl);
@@ -64,7 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
 						$image->setImageFormat('jpeg');
 						// $image->setImageFormat( "png" );
 
-						$image->setImageCompression(\Imagick::COMPRESSION_JPEG);
+						$image->setImageCompression(Imagick::COMPRESSION_JPEG);
 						$image->setImageCompressionQuality(50);
 
 						$archivo = $uploadDir.str_ireplace($extension, 'jpg', basename($file['name']));

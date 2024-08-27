@@ -28,3 +28,4 @@
 [2024-06-06 11:09:31] IP: 127.0.0.1 | Params: {"page_segmentation":"4","resolution":"300","debug":"1"} | Response: {"status":"success","file":"AC 110-07.pdf"}
 [2024-06-06 11:09:48] IP: 127.0.0.1 | Params: {"page_segmentation":"4","resolution":"300","debug":"1"} | Response: {"status":"success","file":"DAMSP - 10.2023.pdf"}
 [2024-06-07 09:56:58] IP: 127.0.0.1 | Params: {"page_segmentation":"4","resolution":"300","debug":"1"} | Response: {"status":"success","file":"Azur.pdf"}
+[2024-08-27 12:12:59] IP: 127.0.0.1 | Params: {"page_segmentation":"4","resolution":"300","debug":"1"} | Response: {"status":"success","file":"e-Social - Rela\u00e7\u00e3o de eventos CNPJ 1.pdf"}
