@@ -29,3 +29,11 @@
 [2024-06-06 11:09:48] IP: 127.0.0.1 | Params: {"page_segmentation":"4","resolution":"300","debug":"1"} | Response: {"status":"success","file":"DAMSP - 10.2023.pdf"}
 [2024-06-07 09:56:58] IP: 127.0.0.1 | Params: {"page_segmentation":"4","resolution":"300","debug":"1"} | Response: {"status":"success","file":"Azur.pdf"}
 [2024-08-27 12:12:59] IP: 127.0.0.1 | Params: {"page_segmentation":"4","resolution":"300","debug":"1"} | Response: {"status":"success","file":"e-Social - Rela\u00e7\u00e3o de eventos CNPJ 1.pdf"}
+[2024-08-27 17:36:45] IP: 127.0.0.1 | Params: {"page_segmentation":"4","resolution":"300","debug":"1"} | Response: {"status":"success","file":"e-Social - Rela\u00e7\u00e3o de eventos CNPJ 1.pdf"}
+[2024-08-27 18:26:11] IP: 127.0.0.1 | Params: {"page_segmentation":"1","resolution":"300","debug":"1"} | Response: {"status":"success","file":"C\u00f3pia de 1.2019 - TOMADOS_cripto.pdf"}
+[2024-08-27 18:27:53] IP: 127.0.0.1 | Params: {"page_segmentation":"1","resolution":"250","debug":"1"} | Response: {"status":"success","file":"C\u00f3pia de 1.2019 - TOMADOS_cripto.pdf"}
+[2024-08-27 18:44:38] IP: 127.0.0.1 | Params: {"page_segmentation":"1","resolution":"250","debug":"1"} | Response: {"status":"success","file":"C\u00f3pia de Guia ISS PARANA\u00cdTA_Cripto.pdf"}
+[2024-08-27 18:45:09] IP: 127.0.0.1 | Params: {"page_segmentation":"1","resolution":"250","debug":"1"} | Response: {"status":"success","file":"C\u00f3pia de Guia ISS PARANA\u00cdTA_Cripto.pdf"}
+[2024-08-27 18:48:54] IP: 127.0.0.1 | Params: {"page_segmentation":"0","resolution":"250","debug":"1"} | Response: {"status":"success","file":"C\u00f3pia de Guia ISS PARANA\u00cdTA_Cripto.pdf"}
+[2024-08-27 18:49:10] IP: 127.0.0.1 | Params: {"page_segmentation":"4","resolution":"250","debug":"1"} | Response: {"status":"success","file":"C\u00f3pia de Guia ISS PARANA\u00cdTA_Cripto.pdf"}
+[2024-08-27 18:52:49] IP: 127.0.0.1 | Params: {"page_segmentation":"4","resolution":"250","debug":"1"} | Response: {"status":"success","file":"C\u00f3pia de M.A Brito - Guia DARF Prev-Cripto.pdf"}
