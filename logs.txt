@@ -37,3 +37,14 @@
 [2024-08-27 18:48:54] IP: 127.0.0.1 | Params: {"page_segmentation":"0","resolution":"250","debug":"1"} | Response: {"status":"success","file":"C\u00f3pia de Guia ISS PARANA\u00cdTA_Cripto.pdf"}
 [2024-08-27 18:49:10] IP: 127.0.0.1 | Params: {"page_segmentation":"4","resolution":"250","debug":"1"} | Response: {"status":"success","file":"C\u00f3pia de Guia ISS PARANA\u00cdTA_Cripto.pdf"}
 [2024-08-27 18:52:49] IP: 127.0.0.1 | Params: {"page_segmentation":"4","resolution":"250","debug":"1"} | Response: {"status":"success","file":"C\u00f3pia de M.A Brito - Guia DARF Prev-Cripto.pdf"}
+[2024-08-28 14:03:23] IP: 127.0.0.1 | Params: {"page_segmentation":"4","resolution":"250","debug":"1"} | Response: {"status":"success","file":"C\u00f3pia de 1.2019 - TOMADOS_cripto.pdf"}
+[2024-08-28 14:05:46] IP: 127.0.0.1 | Params: {"page_segmentation":"4","resolution":"250","debug":"1"} | Response: {"status":"success","file":"DAMSP_45950083_202110.PDF"}
+[2024-08-28 16:44:23] IP: 127.0.0.1 | Params: {"page_segmentation":"4","resolution":"250"} | Response: {"status":"success","file":"DAMSP_45950083_202110.PDF","timeConversion":"1.342secs","timeReading":"1.561secs","totalTime":"2.903secs"}
+[2024-08-28 16:46:22] IP: 127.0.0.1 | Params: {"page_segmentation":"4","resolution":"250"} | Response: {"status":"success","file":"C\u00f3pia de 1.2019 - TOMADOS_cripto.pdf","timeConversion":"2.619secs","timeReading":"0.919secs","totalTime":"3.538secs"}
+[2024-08-29 08:01:14] TXTReader2 / IP: 127.0.0.1 | Response: 14.271
+[2024-08-29 08:01:19] TXTReader / IP: 127.0.0.1 | Response: 0.321
+[2024-08-29 08:15:53] TXTReader / IP: 127.0.0.1 | Response: 0.107
+[2024-08-29 08:18:14] TXTReader / IP: 127.0.0.1 | Response: 0.014
+[2024-08-29 08:18:38] TXTReader / IP: 127.0.0.1 | Response: 0
+[2024-08-29 08:18:45] TXTReader / IP: 127.0.0.1 | Response: 0
+[2024-08-29 08:19:13] TXTReader / IP: 127.0.0.1 | Response: 0.006
