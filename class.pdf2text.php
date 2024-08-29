@@ -94,7 +94,7 @@ class PDF2Text {
 				// Check object parameters and look for text data. 
 				$options = $this->getObjectOptions($currentObject); 
 	
-				if (!(empty($options["Length1"]) && empty($options["Type"]) && empty($options["Subtype"]))) 
+				if(!(empty($options["Type"]) && empty($options["Subtype"])))
 					continue; 
 	
 				// Hack, length doesnt always seem to be correct
@@ -250,16 +250,21 @@ class PDF2Text {
 			$_stream = substr($stream, 0, $length);
 	
 			foreach ($options as $key => $value) {
-				if ($key == "ASCIIHexDecode")
+				if ($key == "ASCIIHexDecode") {
 					$_stream = $this->decodeAsciiHex($_stream);
-				if ($key == "ASCII85Decode")
+				}
+				if ($key == "ASCII85Decode") {
 					$_stream = $this->decodeAscii85($_stream);
-				if ($key == "FlateDecode")
+				}
+				if ($key == "FlateDecode") {
 					$_stream = $this->decodeFlate($_stream);
+				}
 				if ($key == "Crypt") { // TO DO
 				}
 			}
-			$data = $_stream;
+			
+			// $data = $_stream;
+			$data = mb_convert_encoding($_stream, "UTF-8", "ISO-8859-1");
 		}
 		return $data;
 	}
