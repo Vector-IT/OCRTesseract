@@ -93,19 +93,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
 						exec('tesseract "'.$archivo.'" stdout', $output);
 					}
 
-					$finalOutput = [];
-					foreach ($output as $line) {
-						if (trim($line) !== '') {
-							$finalOutput[] = trim($line);
-						}
-					}
-					$output = $finalOutput;
-					
 					$horaFin = microtime(true);
 					$timeReading = round($horaFin - $horaInicio, 3);
 
 					$response = [];
-					$response['status'] = 'success';
 					$response['file'] = basename($file['name']);
 					
 					$log = $response;
@@ -123,7 +114,72 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
 
 					error_log('['.date('Y-m-d H:i:s').'] IP: '.$_SERVER['REMOTE_ADDR'].' | Params: '.json_encode($_POST).' | Response: '.json_encode($log).PHP_EOL, 3, 'logs.txt');
 
-					$response['data'] = $output;
+					$finalOutput = [];
+					foreach ($output as $line) {
+						if (trim($line) !== '') {
+							$finalOutput[] = trim($line);
+						}
+					}
+					$output = $finalOutput;
+					
+					// READ DATA
+					define('iDAMSP', 3);
+					define('iCNPJ' , 7);
+					
+					// Check if the file is a DAMSP
+					if (
+						count($output) > iDAMSP &&
+						(
+						$output[iDAMSP] == 'DAMSP - Documento de Arrecadação do Município de São Paulo' ||
+						(strcasecmp(substr($output[iDAMSP], 0, 5), 'DAMSP') == 0 && strcasecmp(substr($output[iDAMSP], -5), 'Paulo') == 0) ||
+						(strpos($output[iDAMSP], 'DAMSP - Documento de Arrecadação do Município de São Paulo') !== false) ||
+						(strpos($output[iDAMSP], 'DAMSP') !== false && strpos($output[iDAMSP], 'Paulo') !== false)
+						)
+					) {
+						// IS A DAMSP OF SP
+						$response['status'] = 'success';
+
+						// Get CPF/CNPJ
+						$cnpj = '';
+						$iSpace = 0;
+						$isValidCNPJ = false;
+						do {
+							$iSpace = strpos($output[iCNPJ], ' ', $iSpace + 1);
+							if ($iSpace !== false) {
+								$cnpj = substr($output[iCNPJ], 0, $iSpace);
+							}
+							
+							$isValidCNPJ = validateCNPJ($cnpj) || validateCPF($cnpj);
+
+						} while (!$isValidCNPJ && $iSpace !== false);
+
+						$cnpj = preg_replace('/[^0-9]/', '', $cnpj);
+						if (validateCNPJ($cnpj)) {
+							$cnpj = substr($cnpj, 0, 2) . '.' . substr($cnpj, 2, 3) . '.' . substr($cnpj, 5, 3) . '/' . substr($cnpj, 8, 4) . '-' . substr($cnpj, 12, 2);
+						}
+						elseif (validateCPF($cnpj)) {
+							$cnpj = substr($cnpj, 0, 3) . '.' . substr($cnpj, 3, 3) . '.' . substr($cnpj, 6, 3) . '-' . substr($cnpj, 9, 2);
+						}
+
+						// Get Period
+						$iSpaceBegin = strpos($output[iCNPJ], ' ', $iSpace + 2) + 1;
+						$iSpaceEnd = strpos($output[iCNPJ], ' ', $iSpaceBegin);
+						$iSpaceEnd = strpos($output[iCNPJ], ' ', $iSpaceEnd + 1);
+						$iSpaceEnd = strpos($output[iCNPJ], ' ', $iSpaceEnd + 1);
+						
+						$period = substr($output[iCNPJ], $iSpaceBegin, $iSpaceEnd - $iSpaceBegin);
+						if (substr($period, 0, 3) == 'FEY') {
+							$period = 'FEV'.substr($period, 3);
+						}
+						$period = str_replace(' ', '', $period);
+						$response['validDate'] = validateDate($period, ['M/Y', 'M/y']);
+						
+						$response['cpf/cnpj'] = $cnpj;
+						$response['period'] = $period;
+					}
+					else {
+						$response['status'] = 'error - model not found';
+					}
 				}
 				finally {
 					if (file_exists($uploadFile)) {
@@ -165,3 +221,78 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
 
 // Devuelve la respuesta en formato JSON
 echo json_encode($response);
+
+function validateCNPJ($cnpj): bool {
+	// Elimina cualquier carácter no numérico
+	$cnpj = preg_replace('/[^0-9]/', '', $cnpj);
+
+	// Verifica si el CNPJ tiene 14 dígitos
+	if (strlen($cnpj) != 14) {
+		return false;
+	}
+
+	// Primer paso: multiplicación por los factores 5,4,3,2,9,8,7,6,5,4,3,2
+	$pesos1 = [5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2];
+	$suma1 = 0;
+	for ($i = 0; $i < 12; $i++) {
+		$suma1 += $cnpj[$i] * $pesos1[$i];
+	}
+	$resto1 = $suma1 % 11;
+	$digito1 = $resto1 < 2 ? 0 : 11 - $resto1;
+
+	// Verifica el primer dígito
+	if ($cnpj[12] != $digito1) {
+		return false;
+	}
+
+	// Segundo paso: multiplicación por los factores 6,5,4,3,2,9,8,7,6,5,4,3,2
+	$pesos2 = [6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2];
+	$suma2 = 0;
+	for ($i = 0; $i < 13; $i++) {
+		$suma2 += $cnpj[$i] * $pesos2[$i];
+	}
+	$resto2 = $suma2 % 11;
+	$digito2 = $resto2 < 2 ? 0 : 11 - $resto2;
+
+	// Verifica el segundo dígito
+	return $cnpj[13] == $digito2;
+}
+
+function validateCPF(string $cpf): bool {
+	// Elimina cualquier carácter no numérico
+	$cpf = preg_replace('/[^0-9]/', '', $cpf);
+
+	if (strlen($cpf) != 11) {
+		return false;
+	}
+
+	$elementos = (array)str_split($cpf);
+	$elementos[10] = 0; // Reduz uma comparação no calculo de $somaB
+	$somaA = 0;
+	$somaB = 0;
+	foreach ($elementos as $indice => $elemento) {
+		$multiplicador = count($elementos) - $indice;
+		$somaA += (int)$elemento * (int)($multiplicador > 2 ? $multiplicador - 1 : 0);
+		$somaB += (int)$elemento * (int)$multiplicador;
+	}
+
+	$moduloA = (($somaA * 10) % 11) % 10;
+	$moduloB = (($somaB * 10) % 11) % 10;
+
+	return preg_replace('#\d{9}(\d{2})$#', '$1', $cpf) == $moduloA . $moduloB;
+}
+
+function validateDate($dateString, $formats, $locale = 'pt_BR') {
+	$generator = new IntlDatePatternGenerator($locale);
+	$formatter = new IntlDateFormatter($locale, IntlDateFormatter::NONE, IntlDateFormatter::NONE);
+
+	foreach ($formats as $format) {
+		$pattern = $generator->getBestPattern($format);
+		$formatter->setPattern($pattern);
+
+		if ($formatter->parse($dateString)) {
+            return true;
+        }
+	}
+	return false;
+}

@@ -8,7 +8,7 @@
     "method": "POST",
     "sortNum": 10000,
     "created": "2024-05-26T05:08:20.367Z",
-    "modified": "2024-08-28T19:46:22.926Z",
+    "modified": "2024-09-13T01:35:04.969Z",
     "headers": [],
     "params": [],
     "body": {
@@ -31,7 +31,7 @@
         },
         {
           "name": "resolution",
-          "value": "250"
+          "value": "300"
         },
         {
           "name": "debug",
@@ -42,7 +42,7 @@
       "files": [
         {
           "name": "file",
-          "value": "..\\files\\Encriptados\\Cópia de 1.2019 - TOMADOS_cripto.pdf"
+          "value": "..\\files\\DAMSP\\2024.03.11 - Marv Comércio - DAMSP ISS Prestados 02.2024.pdf"
         }
       ]
     },
@@ -92,6 +92,153 @@
         {
           "name": "file",
           "value": "..\\files\\Encriptados\\Cópia de 1.2019 - TOMADOS_cripto.pdf"
+        }
+      ]
+    },
+    "tests": []
+  },
+  {
+    "_id": "ec767c49-2266-4093-b8f1-0303a0fe02af",
+    "colId": "bfc368ae-64f7-47af-8d85-6b2fef7429e5",
+    "containerId": "",
+    "name": "DAMSP - Local",
+    "url": "http://notebook.vector-it.com.ar/VectorPDF/damsp.php",
+    "method": "POST",
+    "sortNum": 15000,
+    "created": "2024-09-12T23:44:15.622Z",
+    "modified": "2024-09-13T01:37:21.439Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "formdata",
+      "raw": "",
+      "form": [
+        {
+          "name": "language",
+          "value": "por",
+          "isDisabled": true
+        },
+        {
+          "name": "preserve_spaces",
+          "value": "0",
+          "isDisabled": true
+        },
+        {
+          "name": "page_segmentation",
+          "value": "4"
+        },
+        {
+          "name": "resolution",
+          "value": "300"
+        },
+        {
+          "name": "debug",
+          "value": "1",
+          "isDisabled": true
+        }
+      ],
+      "files": [
+        {
+          "name": "file",
+          "value": "..\\files\\DAMSP\\2024.03.11 - Marv Comércio - DAMSP ISS Prestados 02.2024.pdf"
+        }
+      ]
+    },
+    "tests": []
+  },
+  {
+    "_id": "35c5d275-0424-4bee-824d-ceca1390c920",
+    "colId": "bfc368ae-64f7-47af-8d85-6b2fef7429e5",
+    "containerId": "",
+    "name": "Read - Local Copy",
+    "url": "http://notebook.vector-it.com.ar/VectorPDF/",
+    "method": "POST",
+    "sortNum": 12500,
+    "created": "2024-09-12T23:52:11.736Z",
+    "modified": "2024-09-12T23:52:11.736Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "formdata",
+      "raw": "",
+      "form": [
+        {
+          "name": "language",
+          "value": "por",
+          "isDisabled": true
+        },
+        {
+          "name": "preserve_spaces",
+          "value": "0",
+          "isDisabled": true
+        },
+        {
+          "name": "page_segmentation",
+          "value": "4"
+        },
+        {
+          "name": "resolution",
+          "value": "250"
+        },
+        {
+          "name": "debug",
+          "value": "1",
+          "isDisabled": true
+        }
+      ],
+      "files": [
+        {
+          "name": "file",
+          "value": "..\\files\\DAMSP - 10.2023.pdf"
+        }
+      ]
+    },
+    "tests": []
+  },
+  {
+    "_id": "5653cc73-38ba-4816-afcf-9841a95c49f7",
+    "colId": "bfc368ae-64f7-47af-8d85-6b2fef7429e5",
+    "containerId": "",
+    "name": "Read - Local Copy",
+    "url": "http://notebook.vector-it.com.ar/VectorPDF/",
+    "method": "POST",
+    "sortNum": 12500,
+    "created": "2024-09-12T23:52:15.206Z",
+    "modified": "2024-09-13T00:06:43.257Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "formdata",
+      "raw": "",
+      "form": [
+        {
+          "name": "language",
+          "value": "por",
+          "isDisabled": true
+        },
+        {
+          "name": "preserve_spaces",
+          "value": "0",
+          "isDisabled": true
+        },
+        {
+          "name": "page_segmentation",
+          "value": "4"
+        },
+        {
+          "name": "resolution",
+          "value": "300"
+        },
+        {
+          "name": "debug",
+          "value": "1",
+          "isDisabled": true
+        }
+      ],
+      "files": [
+        {
+          "name": "file",
+          "value": "..\\files\\DAMSP_45950083_202110.PDF"
         }
       ]
     },

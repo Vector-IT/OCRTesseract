@@ -235,7 +235,7 @@
     "method": "POST",
     "sortNum": 0,
     "created": "2024-08-27T14:41:43.800Z",
-    "modified": "2024-08-28T19:46:22.929Z",
+    "modified": "2024-09-13T01:35:04.973Z",
     "headers": [],
     "params": [],
     "body": {
@@ -258,7 +258,7 @@
         },
         {
           "name": "resolution",
-          "value": "250"
+          "value": "300"
         },
         {
           "name": "debug",
@@ -269,7 +269,56 @@
       "files": [
         {
           "name": "file",
-          "value": "..\\files\\Encriptados\\Cópia de 1.2019 - TOMADOS_cripto.pdf"
+          "value": "..\\files\\DAMSP\\2024.03.11 - Marv Comércio - DAMSP ISS Prestados 02.2024.pdf"
+        }
+      ]
+    },
+    "tests": []
+  },
+  {
+    "_id": "3ebdad29-23bd-4c7c-970f-1dd8482e8096",
+    "colId": "history",
+    "containerId": "",
+    "name": "http://notebook.vector-it.com.ar/VectorPDF/damsp.php",
+    "url": "http://notebook.vector-it.com.ar/VectorPDF/damsp.php",
+    "method": "POST",
+    "sortNum": 0,
+    "created": "2024-09-12T23:44:43.132Z",
+    "modified": "2024-09-13T01:37:21.444Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "formdata",
+      "raw": "",
+      "form": [
+        {
+          "name": "language",
+          "value": "por",
+          "isDisabled": true
+        },
+        {
+          "name": "preserve_spaces",
+          "value": "0",
+          "isDisabled": true
+        },
+        {
+          "name": "page_segmentation",
+          "value": "4"
+        },
+        {
+          "name": "resolution",
+          "value": "300"
+        },
+        {
+          "name": "debug",
+          "value": "1",
+          "isDisabled": true
+        }
+      ],
+      "files": [
+        {
+          "name": "file",
+          "value": "..\\files\\DAMSP\\2024.03.11 - Marv Comércio - DAMSP ISS Prestados 02.2024.pdf"
         }
       ]
     },
