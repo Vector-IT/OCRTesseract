@@ -243,5 +243,54 @@
       ]
     },
     "tests": []
+  },
+  {
+    "_id": "e35edd83-40a1-4d41-968f-8f3e2e7b4dc5",
+    "colId": "bfc368ae-64f7-47af-8d85-6b2fef7429e5",
+    "containerId": "",
+    "name": "DAMSP - Local Copy",
+    "url": "https://desarrollo.vector-it.com.ar/VectorPDF/damsp.php",
+    "method": "POST",
+    "sortNum": 17500,
+    "created": "2024-09-25T14:00:36.289Z",
+    "modified": "2024-09-25T14:22:46.393Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "formdata",
+      "raw": "",
+      "form": [
+        {
+          "name": "language",
+          "value": "por",
+          "isDisabled": true
+        },
+        {
+          "name": "preserve_spaces",
+          "value": "0",
+          "isDisabled": true
+        },
+        {
+          "name": "page_segmentation",
+          "value": "4"
+        },
+        {
+          "name": "resolution",
+          "value": "300"
+        },
+        {
+          "name": "debug",
+          "value": "1",
+          "isDisabled": true
+        }
+      ],
+      "files": [
+        {
+          "name": "file",
+          "value": "..\\files\\DAMSP\\ISS PRESTADOS 736.pdf"
+        }
+      ]
+    },
+    "tests": []
   }
 ]

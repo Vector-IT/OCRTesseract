@@ -123,19 +123,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
 					$output = $finalOutput;
 					
 					// READ DATA
-					define('iDAMSP', 3);
-					define('iCNPJ' , 7);
+					define('iDAMSP', [1, 2, 3]);
+					define('iCNPJ' , [6, 7]);
 					
 					// Check if the file is a DAMSP
-					if (
-						count($output) > iDAMSP &&
-						(
-						$output[iDAMSP] == 'DAMSP - Documento de Arrecadação do Município de São Paulo' ||
-						(strcasecmp(substr($output[iDAMSP], 0, 5), 'DAMSP') == 0 && strcasecmp(substr($output[iDAMSP], -5), 'Paulo') == 0) ||
-						(strpos($output[iDAMSP], 'DAMSP - Documento de Arrecadação do Município de São Paulo') !== false) ||
-						(strpos($output[iDAMSP], 'DAMSP') !== false && strpos($output[iDAMSP], 'Paulo') !== false)
-						)
-					) {
+					$blnDAMSP = false;
+					for ($i = 0; $i < count(iDAMSP); $i++) {
+						if (
+							count($output) > iDAMSP[$i] &&
+							(
+							$output[iDAMSP[$i]] == 'DAMSP - Documento de Arrecadação do Município de São Paulo' ||
+							(strcasecmp(substr($output[iDAMSP[$i]], 0, 5), 'DAMSP') == 0 && strcasecmp(substr($output[iDAMSP[$i]], -5), 'Paulo') == 0) ||
+							(strpos($output[iDAMSP[$i]], 'DAMSP - Documento de Arrecadação do Município de São Paulo') !== false) ||
+							(strpos($output[iDAMSP[$i]], 'DAMSP') !== false && strpos($output[iDAMSP[$i]], 'Paulo') !== false)
+							)
+						) {	
+							$blnDAMSP = true;
+							break;
+						}
+					}
+
+					if ($blnDAMSP) {
 						// IS A DAMSP OF SP
 						$response['status'] = 'success';
 
@@ -143,39 +151,46 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
 						$cnpj = '';
 						$iSpace = 0;
 						$isValidCNPJ = false;
-						do {
-							$iSpace = strpos($output[iCNPJ], ' ', $iSpace + 1);
-							if ($iSpace !== false) {
-								$cnpj = substr($output[iCNPJ], 0, $iSpace);
+						for ($i = 0; $i < count(iCNPJ); $i++) {
+							do {
+								$iSpace = strpos($output[iCNPJ[$i]], ' ', $iSpace + 1);
+								if ($iSpace !== false) {
+									$cnpj = substr($output[iCNPJ[$i]], 0, $iSpace);
+								}
+								
+								$isValidCNPJ = validateCNPJ($cnpj) || validateCPF($cnpj);
+
+							} while (!$isValidCNPJ && $iSpace !== false);
+
+							$cnpj = preg_replace('/[^0-9]/', '', $cnpj);
+							if (validateCNPJ($cnpj)) {
+								$cnpj = substr($cnpj, 0, 2) . '.' . substr($cnpj, 2, 3) . '.' . substr($cnpj, 5, 3) . '/' . substr($cnpj, 8, 4) . '-' . substr($cnpj, 12, 2);
 							}
+							elseif (validateCPF($cnpj)) {
+								$cnpj = substr($cnpj, 0, 3) . '.' . substr($cnpj, 3, 3) . '.' . substr($cnpj, 6, 3) . '-' . substr($cnpj, 9, 2);
+							}
+
+							// Get Period
+							$iSpaceBegin = strpos($output[iCNPJ[$i]], ' ', $iSpace + 2) + 1;
+							$iSpaceEnd = strpos($output[iCNPJ[$i]], ' ', $iSpaceBegin);
+							$iSpaceEnd = strpos($output[iCNPJ[$i]], ' ', $iSpaceEnd + 1);
+							$iSpaceEnd = strpos($output[iCNPJ[$i]], ' ', $iSpaceEnd + 1);
 							
-							$isValidCNPJ = validateCNPJ($cnpj) || validateCPF($cnpj);
+							$period = substr($output[iCNPJ[$i]], $iSpaceBegin, $iSpaceEnd - $iSpaceBegin);
+							if (substr($period, 0, 3) == 'FEY') {
+								$period = 'FEV'.substr($period, 3);
+							}
+							$period = str_replace(' ', '', $period);
+							$response['validDate'] = validateDate($period, ['M/Y', 'M/y']);
+							
+							$response['cpf/cnpj'] = $cnpj;
+							$response['period'] = $period;
 
-						} while (!$isValidCNPJ && $iSpace !== false);
-
-						$cnpj = preg_replace('/[^0-9]/', '', $cnpj);
-						if (validateCNPJ($cnpj)) {
-							$cnpj = substr($cnpj, 0, 2) . '.' . substr($cnpj, 2, 3) . '.' . substr($cnpj, 5, 3) . '/' . substr($cnpj, 8, 4) . '-' . substr($cnpj, 12, 2);
-						}
-						elseif (validateCPF($cnpj)) {
-							$cnpj = substr($cnpj, 0, 3) . '.' . substr($cnpj, 3, 3) . '.' . substr($cnpj, 6, 3) . '-' . substr($cnpj, 9, 2);
+							if ($isValidCNPJ && $response['validDate']) {
+								break;
+							}
 						}
 
-						// Get Period
-						$iSpaceBegin = strpos($output[iCNPJ], ' ', $iSpace + 2) + 1;
-						$iSpaceEnd = strpos($output[iCNPJ], ' ', $iSpaceBegin);
-						$iSpaceEnd = strpos($output[iCNPJ], ' ', $iSpaceEnd + 1);
-						$iSpaceEnd = strpos($output[iCNPJ], ' ', $iSpaceEnd + 1);
-						
-						$period = substr($output[iCNPJ], $iSpaceBegin, $iSpaceEnd - $iSpaceBegin);
-						if (substr($period, 0, 3) == 'FEY') {
-							$period = 'FEV'.substr($period, 3);
-						}
-						$period = str_replace(' ', '', $period);
-						$response['validDate'] = validateDate($period, ['M/Y', 'M/y']);
-						
-						$response['cpf/cnpj'] = $cnpj;
-						$response['period'] = $period;
 					}
 					else {
 						$response['status'] = 'error - model not found';
@@ -282,7 +297,7 @@ function validateCPF(string $cpf): bool {
 	return preg_replace('#\d{9}(\d{2})$#', '$1', $cpf) == $moduloA . $moduloB;
 }
 
-function validateDate($dateString, $formats, $locale = 'pt_BR') {
+function validateDate($dateString, $formats, $locale = 'pt_BR'): bool {
 	$generator = new IntlDatePatternGenerator($locale);
 	$formatter = new IntlDateFormatter($locale, IntlDateFormatter::NONE, IntlDateFormatter::NONE);
 
