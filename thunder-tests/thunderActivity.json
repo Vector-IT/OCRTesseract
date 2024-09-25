@@ -42,7 +42,7 @@
     "method": "POST",
     "sortNum": 0,
     "created": "2024-05-27T01:08:51.471Z",
-    "modified": "2024-06-07T12:56:58.701Z",
+    "modified": "2024-09-25T15:25:07.605Z",
     "headers": [],
     "params": [],
     "body": {
@@ -61,7 +61,7 @@
         },
         {
           "name": "page_segmentation",
-          "value": "4"
+          "value": "6"
         },
         {
           "name": "resolution",
@@ -69,13 +69,14 @@
         },
         {
           "name": "debug",
-          "value": "1"
+          "value": "1",
+          "isDisabled": true
         }
       ],
       "files": [
         {
           "name": "file",
-          "value": "c:\\Users\\Jose Romero\\Desktop\\Azur.pdf"
+          "value": "..\\files\\DAMSP\\EXITO\\001-DAMSP_ISS_02-TRIM 2024.pdf"
         }
       ]
     },
@@ -235,7 +236,7 @@
     "method": "POST",
     "sortNum": 0,
     "created": "2024-08-27T14:41:43.800Z",
-    "modified": "2024-09-13T01:35:04.973Z",
+    "modified": "2024-09-25T14:58:20.638Z",
     "headers": [],
     "params": [],
     "body": {
@@ -269,7 +270,7 @@
       "files": [
         {
           "name": "file",
-          "value": "..\\files\\DAMSP\\2024.03.11 - Marv Comércio - DAMSP ISS Prestados 02.2024.pdf"
+          "value": "..\\files\\DAMSP\\ERROR\\001-DAMSP_ISS_02-TRIM 2024.pdf"
         }
       ]
     },
@@ -333,7 +334,7 @@
     "method": "POST",
     "sortNum": 0,
     "created": "2024-09-25T14:00:55.404Z",
-    "modified": "2024-09-25T14:22:46.399Z",
+    "modified": "2024-09-25T15:29:17.833Z",
     "headers": [],
     "params": [],
     "body": {
@@ -352,7 +353,7 @@
         },
         {
           "name": "page_segmentation",
-          "value": "4"
+          "value": "6"
         },
         {
           "name": "resolution",
@@ -367,7 +368,7 @@
       "files": [
         {
           "name": "file",
-          "value": "..\\files\\DAMSP\\ISS PRESTADOS 736.pdf"
+          "value": "..\\files\\DAMSP\\ISS HURDOM.pdf"
         }
       ]
     },

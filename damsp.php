@@ -98,6 +98,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
 
 					$response = [];
 					$response['file'] = basename($file['name']);
+					// $response['output'] = $output;
 					
 					$log = $response;
 					
@@ -169,22 +170,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
 							elseif (validateCPF($cnpj)) {
 								$cnpj = substr($cnpj, 0, 3) . '.' . substr($cnpj, 3, 3) . '.' . substr($cnpj, 6, 3) . '-' . substr($cnpj, 9, 2);
 							}
+							$response['cpf/cnpj'] = $cnpj;
 
 							// Get Period
 							$iSpaceBegin = strpos($output[iCNPJ[$i]], ' ', $iSpace + 2) + 1;
-							$iSpaceEnd = strpos($output[iCNPJ[$i]], ' ', $iSpaceBegin);
-							$iSpaceEnd = strpos($output[iCNPJ[$i]], ' ', $iSpaceEnd + 1);
-							$iSpaceEnd = strpos($output[iCNPJ[$i]], ' ', $iSpaceEnd + 1);
+							$iSpaceEnd = $iSpaceBegin - 1;
+							do {
+								$iSpaceEnd = strpos($output[iCNPJ[$i]], ' ', $iSpaceEnd + 1);
+								if ($iSpaceEnd !== false) {
+									$period = substr($output[iCNPJ[$i]], $iSpaceBegin, $iSpaceEnd - $iSpaceBegin);
+									$period = str_replace(' ', '', $period);
+								}
+							} while ((strlen($period) < 7) && $iSpaceEnd !== false);
 							
-							$period = substr($output[iCNPJ[$i]], $iSpaceBegin, $iSpaceEnd - $iSpaceBegin);
-							if (substr($period, 0, 3) == 'FEY') {
-								$period = 'FEV'.substr($period, 3);
+
+							if ($iSpaceEnd !== false) {
+								// Acomodar los datos mal leidos por margen de error
+								if (substr($period, 0, 3) == 'FEY') {
+									$period = 'FEV'.substr($period, 3);
+								}
+								
+								$response['validDate'] = validateDate($period, ['M/Y', 'M/y']);
+								$response['period'] = $period;
 							}
-							$period = str_replace(' ', '', $period);
-							$response['validDate'] = validateDate($period, ['M/Y', 'M/y']);
-							
-							$response['cpf/cnpj'] = $cnpj;
-							$response['period'] = $period;
+							else {
+								$response['validDate'] = false;
+								$response['period'] = $period;	
+							}
 
 							if ($isValidCNPJ && $response['validDate']) {
 								break;
