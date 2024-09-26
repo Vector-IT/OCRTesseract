@@ -115,11 +115,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
 						$response['timeReading'] = $timeReading.'secs';
 						$response['totalTime'] = ($timeConversion + $timeReading).'secs';
 					}
-					else {
-						$log['timeConversion'] = $timeConversion.'secs';
-						$log['timeReading'] = $timeReading.'secs';
-						$log['totalTime'] = ($timeConversion + $timeReading).'secs';
-					}
+
+					$log['timeConversion'] = $timeConversion.'secs';
+					$log['timeReading'] = $timeReading.'secs';
+					$log['totalTime'] = ($timeConversion + $timeReading).'secs';
 
 					error_log('['.date('Y-m-d H:i:s').'] IP: '.$_SERVER['REMOTE_ADDR'].' | Params: '.json_encode($_POST).' | Response: '.json_encode($log).PHP_EOL, 3, 'logs.txt');
 
@@ -132,9 +131,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
 					$output = $finalOutput;
 					
 					// READ DATA
-					define('iDAMSP', [3, 2, 1]);
-					define('iCNPJ' , [7, 6]);
-					define('iPeriod', [7, 6]);
+					// Array de arrays con el numero de linea y la posicion de inicio
+					define('iDAMSP', [3, 4, 2, 1]);
+					define('iCNPJ' , [7, 16, 8, 6, 9]);
+					define('iPeriod', [6, 7, 8, 14]);
 					
 					// Check if the file is a DAMSP
 					$blnDAMSP = false;
@@ -167,6 +167,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
 								if ($iSpace !== false) {
 									$cnpj = substr($output[iCNPJ[$i]], 0, $iSpace);
 								}
+								else {
+									$cnpj = substr($output[iCNPJ[$i]], 0);
+								}
 								
 								$isValidCNPJ = validateCNPJ($cnpj) || validateCPF($cnpj);
 
@@ -179,31 +182,55 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
 							elseif (validateCPF($cnpj)) {
 								$cnpj = substr($cnpj, 0, 3) . '.' . substr($cnpj, 3, 3) . '.' . substr($cnpj, 6, 3) . '-' . substr($cnpj, 9, 2);
 							}
+							$response['valid_cpf_cnpj'] = $isValidCNPJ;
 							$response['cpf_cnpj'] = $cnpj;
 
-							if ($isValidCNPJ ) {
+							if ($isValidCNPJ) {
 								break;
 							}
 						}
 
 						// Get Period
 						for ($i = 0; $i < count(iPeriod); $i++) {
-							if (strlen($output[iPeriod[$i]]) < $iSpace + 2) {
-								continue;
-							}
+							$period = '';
+							$iBarra = 0;
 							
-							$iSpaceBegin = strpos($output[iPeriod[$i]], ' ', $iSpace + 2) + 1;
-							$iSpaceEnd = $iSpaceBegin - 1;
 							do {
-								$iSpaceEnd = strpos($output[iPeriod[$i]], ' ', $iSpaceEnd + 1);
-								if ($iSpaceEnd !== false) {
-									$period = substr($output[iPeriod[$i]], $iSpaceBegin, $iSpaceEnd - $iSpaceBegin);
-									$period = str_replace(' ', '', $period);
+								$iBarraOld = $iBarra;
+								$iBarra = strpos($output[iPeriod[$i]], '/', $iBarraOld + 1);
+
+								$iSpaceBegin = strrpos(substr($output[iPeriod[$i]], $iBarraOld, $iBarra - 1), ' ');
+
+								if ($iSpaceBegin === false) {
+									$iSpaceBegin = 0;
 								}
-							} while ((strlen($period) < 7) && $iSpaceEnd !== false && !validateDate($period));
+								else {
+									$iSpaceBegin;
+								}
+
+								$iSpaceEnd = $iSpaceBegin;
+
+								do {
+									$iSpaceEnd = strpos($output[iPeriod[$i]], ' ', $iSpaceEnd + 1);
+									
+									if ($iSpaceEnd !== false) {
+										$period = substr($output[iPeriod[$i]], $iSpaceBegin, $iSpaceEnd - $iSpaceBegin);
+									}
+									else {
+										$period = substr($output[iPeriod[$i]], $iSpaceBegin);
+									}
+									$period = str_replace(' ', '', $period);
+
+									if (validateDate($period)) {
+										$iSpaceEnd = false;
+									}
+
+								} while ($iSpaceEnd !== false);
+								
+							} while (!validateDate($period) && $iBarra !== false);
 							
 
-							if ($iSpaceEnd !== false) {
+							if ($iSpaceEnd !== false || $period != '') {
 								// Acomodar los datos mal leidos por margen de error
 								if (substr($period, 0, 3) == 'FEY') {
 									$period = 'FEV'.substr($period, 3);
@@ -335,7 +362,58 @@ function validateCPF(string $cpf): bool {
 	return preg_replace('#\d{9}(\d{2})$#', '$1', $cpf) == $moduloA . $moduloB;
 }
 
-function validateDate($dateString, $formats = ['M/Y', 'M/y'], $locale = 'pt_BR'): bool {
+function validateDate($dateString, $formats = ['M/Y', 'M/y']): bool {
+	$meses = [
+		[1, "JANEIRO", "JAN", "JANUARY", "JAN"],
+		[2, "FEVEREIRO", "FEV", "FEBRUARY", "FEB"],
+		[3, "MARÇO", "MAR", "MARCH", "MAR"],
+		[4, "ABRIL", "ABR", "APRIL", "APR"],
+		[5, "MAIO", "MAI", "MAY", "MAY"],
+		[6, "JUNHO", "JUN", "JUNE", "JUN"],
+		[7, "JULHO", "JUL", "JULY", "JUL"],
+		[8, "AGOSTO", "AGO", "AUGUST", "AUG"],
+		[9, "SETEMBRO", "SET", "SEPTEMBER", "SEP"],
+		[10, "OUTUBRO", "OUT", "OCTOBER", "OCT"],
+		[11, "NOVEMBRO", "NOV", "NOVEMBER", "NOV"],
+		[12, "DEZEMBRO", "DEZ", "DECEMBER", "DEC"]
+	];
+	
+	$valMes = false;
+	$valAno = false;
+	
+	// Controlar mes
+	$mes = strtoupper(substr($dateString, 0, strpos($dateString, "/")));
+
+	foreach($meses as $arrayMes) {
+		if(in_array($mes, $arrayMes)) {
+			$valMes = true;
+			break;
+		}
+	}
+
+	// Controlar año
+	$ano = substr($dateString, strpos($dateString, "/") + 1);
+
+	if (is_numeric($ano)) {
+		if (strlen($ano) == 2) {
+			if ($ano > 0 && $ano < 100) {
+				$valAno = true;
+			}
+		}
+		elseif (strlen($ano) == 4) {
+			if ($ano > 1900 && $ano < 2100) {
+				$valAno = true;
+			}
+		}
+		else {
+			$valAno = false;
+		}
+	}
+
+	return $valMes && $valAno;
+}
+
+function validateDate1($dateString, $formats = ['M/Y', 'M/y'], $locale = 'pt_BR'): bool {
 	$generator = new IntlDatePatternGenerator($locale);
 	$formatter = new IntlDateFormatter($locale, IntlDateFormatter::NONE, IntlDateFormatter::NONE);
 

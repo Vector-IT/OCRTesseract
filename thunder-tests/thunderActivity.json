@@ -334,7 +334,7 @@
     "method": "POST",
     "sortNum": 0,
     "created": "2024-09-25T14:00:55.404Z",
-    "modified": "2024-09-26T03:47:59.020Z",
+    "modified": "2024-09-26T13:24:29.928Z",
     "headers": [],
     "params": [],
     "body": {
@@ -353,21 +353,22 @@
         },
         {
           "name": "page_segmentation",
-          "value": "4"
+          "value": "3"
         },
         {
           "name": "resolution",
-          "value": "150"
+          "value": "155"
         },
         {
           "name": "debug",
-          "value": "1"
+          "value": "1",
+          "isDisabled": true
         }
       ],
       "files": [
         {
           "name": "file",
-          "value": "..\\files\\DAMSP\\ISS PRESTADOS 1634.pdf"
+          "value": "..\\files\\DAMSP\\EXITO\\383.PDF"
         }
       ]
     },

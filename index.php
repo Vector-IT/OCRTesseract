@@ -13,15 +13,18 @@
 		<input type="file" name="file" id="file">
 		<br>
 		<label for="page_segmentation">Page Segmentation:</label>
-		<input type="anumber" name="page_segmentation" id="page_segmentation" value="4">
+		<input type="number" name="page_segmentation" id="page_segmentation" value="4">
 		<br>
 		<label for="resolution">Resolution:</label>
-		<input type="resolution" name="resolution" id="resolution" value="125">
+		<input type="number" name="resolution" id="resolution" value="150">
+		<br>
+		<label for="debug">Debug:</label>
+		<input type="number" name="debug" id="debug" value="0">
 		<br>
 		<button type="submit" name="submit">Submit</button>
 	</form>
 	<iframe id="iframePDF" src="" style="display: inline; float: left; width: 50%; margin-right: 10px;"></iframe>
-	<div id="divResult"></div>
+	<div id="divResult" style="width: 48%; float: left;"></div>
 
 	<script>
 		async function submitForm() {
@@ -39,6 +42,7 @@
 			let bodyContent = new FormData();
 			bodyContent.append("page_segmentation", document.getElementById("page_segmentation").value);
 			bodyContent.append("resolution", document.getElementById("resolution").value);
+			bodyContent.append("debug", document.getElementById("debug").value);
 			bodyContent.append("file", document.getElementById("file").files[0]);
 
 			let response = await fetch("damsp.php", {
@@ -56,8 +60,18 @@
 				document.getElementById("divResult").innerHTML+= '<strong>CPF/CNPJ:</strong>' + dataJSON.cpf_cnpj + '<br>';
 				document.getElementById("divResult").innerHTML+= '<strong>Valid date:</strong>' + (dataJSON.validDate ? 'Yes' : 'No') + '<br>';
 				document.getElementById("divResult").innerHTML+= '<strong>Period:</strong>' + dataJSON.period + '<br>';
+				
+				// if (dataJSON.output !== undefined) {
+				// 	document.getElementById("divResult").innerHTML+= '<strong>Output:</strong>' + JSON.stringify(dataJSON.output) + '<br>';
+				// }
+				
 				if (dataJSON.output !== undefined) {
-					document.getElementById("divResult").innerHTML+= '<strong>Output:</strong>' + JSON.stringify(dataJSON.output) + '<br>';
+					document.getElementById("divResult").innerHTML+= '<strong>Output:</strong>';
+					let I = 0;
+					for (let item of dataJSON.output) {
+						document.getElementById("divResult").innerHTML+= '<br>' + I + ': ' + item;
+						I++;
+					}
 				}
 			} catch (error) {
 				document.getElementById("divResult").innerHTML = data;
@@ -74,6 +88,7 @@
 		document.getElementById("file").addEventListener("change", (e) => {
 			document.getElementById("divResult").innerHTML = "";
 			document.getElementById("iframePDF").src = URL.createObjectURL(e.target.files[0]);
+			document.getElementById("page_segmentation").focus();
 		});
 	</script>
 </body>
