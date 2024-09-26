@@ -198,3 +198,10 @@
 [2024-09-26 00:48:35] IP: 127.0.0.1 | Params: {"page_segmentation":"4","resolution":"150","debug":"1"} | Response: {"file":"ISS PRESTADOS 1634.pdf"}
 [2024-09-26 00:49:57] IP: 127.0.0.1 | Params: {"page_segmentation":"4","resolution":"150","debug":"1"} | Response: {"file":"ISS PRESTADOS 1634.pdf"}
 [2024-09-26 00:52:18] IP: 127.0.0.1 | Params: {"page_segmentation":"4","resolution":"150","debug":"1"} | Response: {"file":"ISS PRESTADOS 1634.pdf"}
+[2024-09-26 01:03:47] IP: 127.0.0.1 | Params: {"page_segmentation":"4","resolution":"150"} | Response: {"file":"ISS.pdf","timeConversion":"1.392secs","timeReading":"1.529secs","totalTime":"2.921secs"}
+[2024-09-26 01:04:12] IP: 127.0.0.1 | Params: {"page_segmentation":"3","resolution":"150"} | Response: {"file":"ISS.pdf","timeConversion":"1.469secs","timeReading":"1.575secs","totalTime":"3.044secs"}
+[2024-09-26 01:04:31] IP: 127.0.0.1 | Params: {"page_segmentation":"3","resolution":"150"} | Response: {"file":"ISS PRESTADOS 238.pdf","timeConversion":"1.347secs","timeReading":"1.756secs","totalTime":"3.103secs"}
+[2024-09-26 01:04:40] IP: 127.0.0.1 | Params: {"page_segmentation":"4","resolution":"150"} | Response: {"file":"ISS PRESTADOS 238.pdf","timeConversion":"1.334secs","timeReading":"1.71secs","totalTime":"3.044secs"}
+[2024-09-26 01:04:58] IP: 127.0.0.1 | Params: {"page_segmentation":"4","resolution":"150"} | Response: {"file":"ISS.pdf","timeConversion":"1.408secs","timeReading":"1.544secs","totalTime":"2.952secs"}
+[2024-09-26 01:05:38] IP: 127.0.0.1 | Params: {"page_segmentation":"4","resolution":"150"} | Response: {"file":"ISS.pdf","timeConversion":"1.585secs","timeReading":"1.564secs","totalTime":"3.149secs"}
+[2024-09-26 01:09:29] IP: 127.0.0.1 | Params: {"page_segmentation":"4","resolution":"150"} | Response: {"file":"ISS.pdf","timeConversion":"1.667secs","timeReading":"1.569secs","totalTime":"3.236secs"}

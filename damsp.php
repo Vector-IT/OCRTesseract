@@ -188,6 +188,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
 
 						// Get Period
 						for ($i = 0; $i < count(iPeriod); $i++) {
+							if (strlen($output[iPeriod[$i]]) < $iSpace + 2) {
+								continue;
+							}
+							
 							$iSpaceBegin = strpos($output[iPeriod[$i]], ' ', $iSpace + 2) + 1;
 							$iSpaceEnd = $iSpaceBegin - 1;
 							do {
