@@ -139,7 +139,7 @@
     "method": "POST",
     "sortNum": 0,
     "created": "2024-06-13T15:08:06.625Z",
-    "modified": "2024-08-27T21:24:47.997Z",
+    "modified": "2024-09-25T18:31:58.929Z",
     "headers": [],
     "params": [],
     "body": {
@@ -158,11 +158,11 @@
         },
         {
           "name": "page_segmentation",
-          "value": "1"
+          "value": "6"
         },
         {
           "name": "resolution",
-          "value": "200"
+          "value": "300"
         },
         {
           "name": "debug",
@@ -173,7 +173,7 @@
       "files": [
         {
           "name": "file",
-          "value": "..\\files\\Encriptados\\Cópia de 1.2019 - TOMADOS_cripto.pdf"
+          "value": "..\\files\\DAMSP\\LEVANTE - DAMSP ISS RETIDO_DEZ21.pdf"
         }
       ]
     },
@@ -334,7 +334,152 @@
     "method": "POST",
     "sortNum": 0,
     "created": "2024-09-25T14:00:55.404Z",
-    "modified": "2024-09-25T15:29:17.833Z",
+    "modified": "2024-09-26T03:47:59.020Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "formdata",
+      "raw": "",
+      "form": [
+        {
+          "name": "language",
+          "value": "por",
+          "isDisabled": true
+        },
+        {
+          "name": "preserve_spaces",
+          "value": "0",
+          "isDisabled": true
+        },
+        {
+          "name": "page_segmentation",
+          "value": "4"
+        },
+        {
+          "name": "resolution",
+          "value": "150"
+        },
+        {
+          "name": "debug",
+          "value": "1"
+        }
+      ],
+      "files": [
+        {
+          "name": "file",
+          "value": "..\\files\\DAMSP\\ISS PRESTADOS 1634.pdf"
+        }
+      ]
+    },
+    "tests": []
+  },
+  {
+    "_id": "2ca197ab-bce3-42cf-9360-e62deec4b054",
+    "colId": "history",
+    "containerId": "",
+    "name": "https://vectorpdf.vector-it.com.ar/damsp.php",
+    "url": "https://vectorpdf.vector-it.com.ar/damsp.php",
+    "method": "POST",
+    "sortNum": 0,
+    "created": "2024-09-25T15:32:25.318Z",
+    "modified": "2024-09-26T03:33:56.769Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "formdata",
+      "raw": "",
+      "form": [
+        {
+          "name": "language",
+          "value": "por",
+          "isDisabled": true
+        },
+        {
+          "name": "preserve_spaces",
+          "value": "0",
+          "isDisabled": true
+        },
+        {
+          "name": "page_segmentation",
+          "value": "4"
+        },
+        {
+          "name": "resolution",
+          "value": "500"
+        },
+        {
+          "name": "debug",
+          "value": "1"
+        }
+      ],
+      "files": [
+        {
+          "name": "file",
+          "value": "..\\files\\DAMSP\\ISS PRESTADOS 238.pdf"
+        }
+      ]
+    },
+    "tests": []
+  },
+  {
+    "_id": "d661a174-86bb-4877-ab77-a17ae84d752c",
+    "colId": "history",
+    "containerId": "",
+    "name": "https://vectorpdf.vector-it.com.ar/api.php",
+    "url": "https://vectorpdf.vector-it.com.ar/api.php",
+    "method": "POST",
+    "sortNum": 0,
+    "created": "2024-09-25T18:32:06.179Z",
+    "modified": "2024-09-25T18:45:33.415Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "formdata",
+      "raw": "",
+      "form": [
+        {
+          "name": "language",
+          "value": "por",
+          "isDisabled": true
+        },
+        {
+          "name": "preserve_spaces",
+          "value": "0",
+          "isDisabled": true
+        },
+        {
+          "name": "page_segmentation",
+          "value": "3"
+        },
+        {
+          "name": "resolution",
+          "value": "400"
+        },
+        {
+          "name": "debug",
+          "value": "1",
+          "isDisabled": true
+        }
+      ],
+      "files": [
+        {
+          "name": "file",
+          "value": "..\\files\\DAMSP\\ISS PRESTADOS 238.pdf"
+        }
+      ]
+    },
+    "tests": []
+  },
+  {
+    "_id": "2d3aa569-97c2-46b2-b7c3-1767bc9e6033",
+    "colId": "history",
+    "containerId": "",
+    "name": "https://desarrollo.vector-it.com.ar/VectorPDF/api.php",
+    "url": "https://desarrollo.vector-it.com.ar/VectorPDF/api.php",
+    "method": "POST",
+    "sortNum": 0,
+    "created": "2024-09-25T18:33:03.990Z",
+    "modified": "2024-09-25T18:45:57.315Z",
     "headers": [],
     "params": [],
     "body": {
@@ -368,7 +513,7 @@
       "files": [
         {
           "name": "file",
-          "value": "..\\files\\DAMSP\\ISS HURDOM.pdf"
+          "value": "..\\files\\DAMSP\\ISS PRESTADOS 238.pdf"
         }
       ]
     },

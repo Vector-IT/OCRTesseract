@@ -3,12 +3,12 @@
     "_id": "6d3566d6-fecc-49dd-ade0-cae4bc2447ce",
     "colId": "bfc368ae-64f7-47af-8d85-6b2fef7429e5",
     "containerId": "",
-    "name": "Read - Local",
-    "url": "https://desarrollo.vector-it.com.ar/VectorPDF/",
+    "name": "Read - Desarrollo",
+    "url": "https://desarrollo.vector-it.com.ar/VectorPDF/api.php",
     "method": "POST",
     "sortNum": 10000,
     "created": "2024-05-26T05:08:20.367Z",
-    "modified": "2024-09-25T15:25:07.602Z",
+    "modified": "2024-09-25T18:45:57.260Z",
     "headers": [],
     "params": [],
     "body": {
@@ -42,7 +42,7 @@
       "files": [
         {
           "name": "file",
-          "value": "..\\files\\DAMSP\\EXITO\\001-DAMSP_ISS_02-TRIM 2024.pdf"
+          "value": "..\\files\\DAMSP\\ISS PRESTADOS 238.pdf"
         }
       ]
     },
@@ -53,11 +53,11 @@
     "colId": "bfc368ae-64f7-47af-8d85-6b2fef7429e5",
     "containerId": "",
     "name": "Read - AWS",
-    "url": "https://vectorpdf.vector-it.com.ar/",
+    "url": "https://vectorpdf.vector-it.com.ar/api.php",
     "method": "POST",
-    "sortNum": 20000,
+    "sortNum": 13750,
     "created": "2024-06-06T01:28:24.128Z",
-    "modified": "2024-08-27T21:24:47.984Z",
+    "modified": "2024-09-25T18:45:33.410Z",
     "headers": [],
     "params": [],
     "body": {
@@ -76,11 +76,11 @@
         },
         {
           "name": "page_segmentation",
-          "value": "1"
+          "value": "3"
         },
         {
           "name": "resolution",
-          "value": "200"
+          "value": "400"
         },
         {
           "name": "debug",
@@ -91,7 +91,7 @@
       "files": [
         {
           "name": "file",
-          "value": "..\\files\\Encriptados\\Cópia de 1.2019 - TOMADOS_cripto.pdf"
+          "value": "..\\files\\DAMSP\\ISS PRESTADOS 238.pdf"
         }
       ]
     },
@@ -101,7 +101,7 @@
     "_id": "ec767c49-2266-4093-b8f1-0303a0fe02af",
     "colId": "bfc368ae-64f7-47af-8d85-6b2fef7429e5",
     "containerId": "",
-    "name": "DAMSP - Local",
+    "name": "DAMSP - Notebook",
     "url": "http://notebook.vector-it.com.ar/VectorPDF/damsp.php",
     "method": "POST",
     "sortNum": 15000,
@@ -150,7 +150,7 @@
     "_id": "35c5d275-0424-4bee-824d-ceca1390c920",
     "colId": "bfc368ae-64f7-47af-8d85-6b2fef7429e5",
     "containerId": "",
-    "name": "Read - Local Copy",
+    "name": "Read - Notebook",
     "url": "http://notebook.vector-it.com.ar/VectorPDF/",
     "method": "POST",
     "sortNum": 12500,
@@ -196,15 +196,15 @@
     "tests": []
   },
   {
-    "_id": "5653cc73-38ba-4816-afcf-9841a95c49f7",
+    "_id": "e35edd83-40a1-4d41-968f-8f3e2e7b4dc5",
     "colId": "bfc368ae-64f7-47af-8d85-6b2fef7429e5",
     "containerId": "",
-    "name": "Read - Local Copy",
-    "url": "http://notebook.vector-it.com.ar/VectorPDF/",
+    "name": "DAMSP - Desarrollo",
+    "url": "https://desarrollo.vector-it.com.ar/VectorPDF/damsp.php",
     "method": "POST",
-    "sortNum": 12500,
-    "created": "2024-09-12T23:52:15.206Z",
-    "modified": "2024-09-13T00:06:43.257Z",
+    "sortNum": 14375,
+    "created": "2024-09-25T14:00:36.289Z",
+    "modified": "2024-09-26T03:47:59.015Z",
     "headers": [],
     "params": [],
     "body": {
@@ -227,33 +227,32 @@
         },
         {
           "name": "resolution",
-          "value": "300"
+          "value": "150"
         },
         {
           "name": "debug",
-          "value": "1",
-          "isDisabled": true
+          "value": "1"
         }
       ],
       "files": [
         {
           "name": "file",
-          "value": "..\\files\\DAMSP_45950083_202110.PDF"
+          "value": "..\\files\\DAMSP\\ISS PRESTADOS 1634.pdf"
         }
       ]
     },
     "tests": []
   },
   {
-    "_id": "e35edd83-40a1-4d41-968f-8f3e2e7b4dc5",
+    "_id": "e9493b7c-3110-470e-848d-74c4daf0ea8a",
     "colId": "bfc368ae-64f7-47af-8d85-6b2fef7429e5",
     "containerId": "",
-    "name": "DAMSP - Local Copy",
-    "url": "https://desarrollo.vector-it.com.ar/VectorPDF/damsp.php",
+    "name": "DAMSP - AWS",
+    "url": "https://vectorpdf.vector-it.com.ar/damsp.php",
     "method": "POST",
-    "sortNum": 17500,
-    "created": "2024-09-25T14:00:36.289Z",
-    "modified": "2024-09-25T15:29:17.828Z",
+    "sortNum": 18750,
+    "created": "2024-09-25T15:31:12.817Z",
+    "modified": "2024-09-26T03:33:56.765Z",
     "headers": [],
     "params": [],
     "body": {
@@ -272,22 +271,21 @@
         },
         {
           "name": "page_segmentation",
-          "value": "6"
+          "value": "4"
         },
         {
           "name": "resolution",
-          "value": "300"
+          "value": "500"
         },
         {
           "name": "debug",
-          "value": "1",
-          "isDisabled": true
+          "value": "1"
         }
       ],
       "files": [
         {
           "name": "file",
-          "value": "..\\files\\DAMSP\\ISS HURDOM.pdf"
+          "value": "..\\files\\DAMSP\\ISS PRESTADOS 238.pdf"
         }
       ]
     },

@@ -51,38 +51,46 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
 						$horaInicio = microtime(true);
 						$pagenumber = 0;
 
-						$myurl = $uploadFile.'['.$pagenumber.']';
-
-						$image = new Imagick();
-						
-						$image->setResolution($resolution, $resolution);
-						$image->readImage($myurl);
-
-						// Flatten all the images - prevent black background
-						$image = $image->flattenImages();
-
-						$image->setImageFormat('jpeg');
-						// $image->setImageFormat( "png" );
-
-						$image->setImageCompression(Imagick::COMPRESSION_JPEG);
-						$image->setImageCompressionQuality(50);
-
 						$archivo = $uploadDir.str_ireplace($extension, 'jpg', basename($file['name']));
-						$image->writeImage($archivo);
 
-						$image->clear();
-						$image->destroy();
+						// $myurl = $uploadFile.'['.$pagenumber.']';
+
+						// $image = new Imagick();
+						
+						// $image->setResolution($resolution, $resolution);
+						// $image->trim();
+						// $image->sharpenImage(0, 1.0);
+
+						// $image->readImage($myurl);
+
+						// // Flatten all the images - prevent black background
+						// $image = $image->flattenImages();
+
+						// $image->setImageFormat('jpeg');
+						// // $image->setImageFormat( "png" );
+
+						// $image->setImageCompression(Imagick::COMPRESSION_JPEG);
+						// $image->setImageCompressionQuality(50);
+
+						// $image->writeImage($archivo);
+
+						// $image->clear();
+						// $image->destroy();
+
+						if (PHP_OS == 'WINNT') {
+							exec('"C:\Program Files\ImageMagick-7.1.1-Q16-HDRI\convert.exe" -density '.$resolution.' -trim "'.$uploadFile.'" -quality 100 -flatten -sharpen 0x1.0 "'. $archivo.'"');
+						}
+						else {
+							exec('convert -density 150 -trim "'.$uploadFile.'" -quality 100 -flatten -sharpen 0x1.0 "'. $archivo.'"');
+						}
 
 						$horaFin = microtime(true);
 						$timeConversion = round($horaFin - $horaInicio, 3);
+						
 					}
 					else {
 						$archivo = $uploadFile;
 					}
-
-					$img = imagecreatefromjpeg($archivo);
-
-					$datos = [];
 
 					// READ ENTIRE FILE
 					$horaInicio = microtime(true);
@@ -124,8 +132,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
 					$output = $finalOutput;
 					
 					// READ DATA
-					define('iDAMSP', [1, 2, 3]);
-					define('iCNPJ' , [6, 7]);
+					define('iDAMSP', [3, 2, 1]);
+					define('iCNPJ' , [7, 6]);
+					define('iPeriod', [7, 6]);
 					
 					// Check if the file is a DAMSP
 					$blnDAMSP = false;
@@ -146,7 +155,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
 
 					if ($blnDAMSP) {
 						// IS A DAMSP OF SP
-						$response['status'] = 'success';
+						$response['status'] = 'error';
 
 						// Get CPF/CNPJ
 						$cnpj = '';
@@ -170,18 +179,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
 							elseif (validateCPF($cnpj)) {
 								$cnpj = substr($cnpj, 0, 3) . '.' . substr($cnpj, 3, 3) . '.' . substr($cnpj, 6, 3) . '-' . substr($cnpj, 9, 2);
 							}
-							$response['cpf/cnpj'] = $cnpj;
+							$response['cpf_cnpj'] = $cnpj;
 
-							// Get Period
-							$iSpaceBegin = strpos($output[iCNPJ[$i]], ' ', $iSpace + 2) + 1;
+							if ($isValidCNPJ ) {
+								break;
+							}
+						}
+
+						// Get Period
+						for ($i = 0; $i < count(iPeriod); $i++) {
+							$iSpaceBegin = strpos($output[iPeriod[$i]], ' ', $iSpace + 2) + 1;
 							$iSpaceEnd = $iSpaceBegin - 1;
 							do {
-								$iSpaceEnd = strpos($output[iCNPJ[$i]], ' ', $iSpaceEnd + 1);
+								$iSpaceEnd = strpos($output[iPeriod[$i]], ' ', $iSpaceEnd + 1);
 								if ($iSpaceEnd !== false) {
-									$period = substr($output[iCNPJ[$i]], $iSpaceBegin, $iSpaceEnd - $iSpaceBegin);
+									$period = substr($output[iPeriod[$i]], $iSpaceBegin, $iSpaceEnd - $iSpaceBegin);
 									$period = str_replace(' ', '', $period);
 								}
-							} while ((strlen($period) < 7) && $iSpaceEnd !== false);
+							} while ((strlen($period) < 7) && $iSpaceEnd !== false && !validateDate($period));
 							
 
 							if ($iSpaceEnd !== false) {
@@ -190,7 +205,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
 									$period = 'FEV'.substr($period, 3);
 								}
 								
-								$response['validDate'] = validateDate($period, ['M/Y', 'M/y']);
+								$response['validDate'] = validateDate($period);
 								$response['period'] = $period;
 							}
 							else {
@@ -198,14 +213,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
 								$response['period'] = $period;	
 							}
 
-							if ($isValidCNPJ && $response['validDate']) {
+							if ($response['validDate']) {
 								break;
 							}
 						}
-
+						
+						if ($isValidCNPJ && $response['validDate']) {
+							$response['status'] = 'success';
+						}
 					}
 					else {
 						$response['status'] = 'error - model not found';
+					}
+
+					if (isset($_POST['debug']) && $_POST['debug'] == '1') {
+						$response['output'] = $output;
 					}
 				}
 				finally {
@@ -309,7 +331,7 @@ function validateCPF(string $cpf): bool {
 	return preg_replace('#\d{9}(\d{2})$#', '$1', $cpf) == $moduloA . $moduloB;
 }
 
-function validateDate($dateString, $formats, $locale = 'pt_BR'): bool {
+function validateDate($dateString, $formats = ['M/Y', 'M/y'], $locale = 'pt_BR'): bool {
 	$generator = new IntlDatePatternGenerator($locale);
 	$formatter = new IntlDateFormatter($locale, IntlDateFormatter::NONE, IntlDateFormatter::NONE);
 
