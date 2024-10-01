@@ -106,7 +106,7 @@
     "method": "POST",
     "sortNum": 15000,
     "created": "2024-09-12T23:44:15.622Z",
-    "modified": "2024-09-13T01:37:21.439Z",
+    "modified": "2024-09-30T23:15:22.628Z",
     "headers": [],
     "params": [],
     "body": {
@@ -115,21 +115,19 @@
       "form": [
         {
           "name": "language",
-          "value": "por",
-          "isDisabled": true
+          "value": "por"
         },
         {
           "name": "preserve_spaces",
-          "value": "0",
-          "isDisabled": true
+          "value": "0"
         },
         {
           "name": "page_segmentation",
-          "value": "4"
+          "value": "3"
         },
         {
           "name": "resolution",
-          "value": "300"
+          "value": "155"
         },
         {
           "name": "debug",
@@ -140,7 +138,7 @@
       "files": [
         {
           "name": "file",
-          "value": "..\\files\\DAMSP\\2024.03.11 - Marv Comércio - DAMSP ISS Prestados 02.2024.pdf"
+          "value": "..\\files\\DAMSP\\ISS PRESTADOS 736.pdf"
         }
       ]
     },

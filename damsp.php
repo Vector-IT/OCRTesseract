@@ -78,10 +78,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
 						// $image->destroy();
 
 						if (PHP_OS == 'WINNT') {
-							exec('"C:\Program Files\ImageMagick-7.1.1-Q16-HDRI\convert.exe" -density '.$resolution.' -trim "'.$uploadFile.'" -quality 100 -flatten -sharpen 0x1.0 "'. $archivo.'"');
+							// exec('"C:\Program Files\ImageMagick-7.1.1-Q16-HDRI\convert.exe" -density '.$resolution.' -trim "'.$uploadFile.'" -quality 100 -flatten -sharpen 0x1.0 "'. $archivo.'"');
+							exec('magick -density '.$resolution.' "'.$uploadFile.'" -trim -quality 100 -flatten -sharpen 0x1.0 "'. $archivo.'"');
 						}
 						else {
-							exec('convert -density 150 -trim "'.$uploadFile.'" -quality 100 -flatten -sharpen 0x1.0 "'. $archivo.'"');
+							exec('convert -density '.$resolution.' "'.$uploadFile.'" -trim -quality 100 -flatten -sharpen 0x1.0 "'. $archivo.'"');
 						}
 
 						$horaFin = microtime(true);
