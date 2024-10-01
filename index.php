@@ -56,10 +56,29 @@
 			try {
 				let dataJSON = JSON.parse(data);
 
-				document.getElementById("divResult").innerHTML = '<strong>Status:</strong>' + dataJSON.status + '<br>';
-				document.getElementById("divResult").innerHTML+= '<strong>CPF/CNPJ:</strong>' + dataJSON.cpf_cnpj + '<br>';
-				document.getElementById("divResult").innerHTML+= '<strong>Valid date:</strong>' + (dataJSON.validDate ? 'Yes' : 'No') + '<br>';
-				document.getElementById("divResult").innerHTML+= '<strong>Period:</strong>' + dataJSON.period + '<br>';
+				document.getElementById("divResult").innerHTML = '';
+
+				for (const key in dataJSON) {
+					if (dataJSON.hasOwnProperty(key)) {
+						if (key !== 'output') {
+							document.getElementById("divResult").innerHTML+= `<strong>${key}:</strong> ${dataJSON[key]}<br>`;
+						}
+						else {
+							document.getElementById("divResult").innerHTML+= '<strong>Output:</strong>';
+							let I = 0;
+							for (let item of dataJSON.output) {
+								document.getElementById("divResult").innerHTML+= '<br>' + I + ': ' + item;
+								I++;
+							}
+						}
+					}
+				}
+
+				
+				// document.getElementById("divResult").innerHTML = '<strong>Status:</strong>' + dataJSON.status + '<br>';
+				// document.getElementById("divResult").innerHTML+= '<strong>CPF/CNPJ:</strong>' + dataJSON.cpf_cnpj + '<br>';
+				// document.getElementById("divResult").innerHTML+= '<strong>Valid date:</strong>' + (dataJSON.validDate ? 'Yes' : 'No') + '<br>';
+				// document.getElementById("divResult").innerHTML+= '<strong>Period:</strong>' + dataJSON.period + '<br>';
 				
 				// if (dataJSON.output !== undefined) {
 				// 	document.getElementById("divResult").innerHTML+= '<strong>Output:</strong>' + JSON.stringify(dataJSON.output) + '<br>';

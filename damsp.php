@@ -156,9 +156,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
 
 					if ($blnDAMSP) {
 						// IS A DAMSP OF SP
+						$response['type'] = 'damsp';
 						$response['status'] = 'error';
 
-						// Get CPF/CNPJ
+						#region Get CPF/CNPJ
 						$cnpj = '';
 						$iSpace = 0;
 						$isValidCNPJ = false;
@@ -190,8 +191,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
 								break;
 							}
 						}
+						#endregion
 
-						// Get Period
+						#region Get Period
 						for ($i = 0; $i < count(iPeriod); $i++) {
 							$period = '';
 							$iBarra = 0;
@@ -249,12 +251,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
 								break;
 							}
 						}
-						
-						if ($isValidCNPJ && $response['validDate']) {
+						#endregion
+
+						// Check if is valid
+						if (!$isValidCNPJ) {
+							$response['status'] = 'error - invalid CNPJ';
+						}
+						elseif (!$response['validDate']) {
+							$response['status'] = 'error - invalid period';
+						}
+						else {
 							$response['status'] = 'success';
 						}
 					}
 					else {
+						$response['type'] = 'unknown';
 						$response['status'] = 'error - model not found';
 					}
 
