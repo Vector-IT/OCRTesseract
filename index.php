@@ -12,12 +12,14 @@
 		<label for="file">Select file:</label>
 		<input type="file" name="file" id="file">
 		<br>
-		<label for="page_segmentation">Page Segmentation:</label>
-		<input type="number" name="page_segmentation" id="page_segmentation" value="4">
-		<br>
-		<label for="resolution">Resolution:</label>
-		<input type="number" name="resolution" id="resolution" value="150">
-		<br>
+		<div style="display: none;">
+			<label for="page_segmentation">Page Segmentation:</label>
+			<input type="number" name="page_segmentation" id="page_segmentation" value="3">
+			<br>
+			<label for="resolution">Resolution:</label>
+			<input type="number" name="resolution" id="resolution" value="155">
+			<br>
+		</div>
 		<label for="debug">Debug:</label>
 		<input type="number" name="debug" id="debug" value="0">
 		<br>
