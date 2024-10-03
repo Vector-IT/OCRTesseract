@@ -111,17 +111,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
 					
 					$log = $response;
 					
-					if (isset($_POST['debug']) && $_POST['debug'] == '1') {
-						$response['timeConversion'] = $timeConversion.'secs';
-						$response['timeReading'] = $timeReading.'secs';
-						$response['totalTime'] = ($timeConversion + $timeReading).'secs';
-					}
-
 					$log['timeConversion'] = $timeConversion.'secs';
 					$log['timeReading'] = $timeReading.'secs';
-					$log['totalTime'] = ($timeConversion + $timeReading).'secs';
-
-					error_log('['.date('Y-m-d H:i:s').'] IP: '.$_SERVER['REMOTE_ADDR'].' | Params: '.json_encode($_POST).' | Response: '.json_encode($log).PHP_EOL, 3, 'logs.txt');
 
 					$finalOutput = [];
 					foreach ($output as $line) {
@@ -131,6 +122,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
 					}
 					$output = $finalOutput;
 					
+					$horaInicio = microtime(true);
+
 					// READ DATA
 					// Array de arrays con el numero de linea y la posicion de inicio
 					define('iDAMSP', [3, 4, 2, 1]);
@@ -143,10 +136,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
 						if (
 							count($output) > iDAMSP[$i] &&
 							(
-							$output[iDAMSP[$i]] == 'DAMSP - Documento de Arrecadação do Município de São Paulo' ||
-							(strcasecmp(substr($output[iDAMSP[$i]], 0, 5), 'DAMSP') == 0 && strcasecmp(substr($output[iDAMSP[$i]], -5), 'Paulo') == 0) ||
-							(strpos($output[iDAMSP[$i]], 'DAMSP - Documento de Arrecadação do Município de São Paulo') !== false) ||
-							(strpos($output[iDAMSP[$i]], 'DAMSP') !== false && strpos($output[iDAMSP[$i]], 'Paulo') !== false)
+								$output[iDAMSP[$i]] == 'DAMSP - Documento de Arrecadação do Município de São Paulo' ||
+								(strcasecmp(substr($output[iDAMSP[$i]], 0, 5), 'DAMSP') == 0 && strcasecmp(substr($output[iDAMSP[$i]], -5), 'Paulo') == 0) ||
+								(strpos($output[iDAMSP[$i]], 'DAMSP - Documento de Arrecadação do Município de São Paulo') !== false) ||
+								(strpos($output[iDAMSP[$i]], 'DAMSP') !== false && strpos($output[iDAMSP[$i]], 'Paulo') !== false)
 							)
 						) {	
 							$blnDAMSP = true;
@@ -272,6 +265,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
 					if (isset($_POST['debug']) && $_POST['debug'] == '1') {
 						$response['output'] = $output;
 					}
+
+					$horaFin = microtime(true);
+					$timeModeling = round($horaFin - $horaInicio, 3);
+
+					$log['timeModeling'] = $timeModeling.'secs';
+					$log['totalTime'] = ($timeConversion + $timeReading + $timeModeling).'secs';
+					error_log('['.date('Y-m-d H:i:s').'] IP: '.$_SERVER['REMOTE_ADDR'].' | Params: '.json_encode($_POST).' | Response: '.json_encode($log).PHP_EOL, 3, 'logs.txt');
+
+					if (isset($_POST['debug']) && $_POST['debug'] == '1') {
+						$response['timeConversion'] = $timeConversion.'secs';
+						$response['timeReading'] = $timeReading.'secs';
+						$response['timeModeling'] = $timeModeling.'secs';
+						$response['totalTime'] = ($timeConversion + $timeReading + $timeModeling).'secs';
+					}
+
 				}
 				finally {
 					if (file_exists($uploadFile)) {

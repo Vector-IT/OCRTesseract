@@ -332,7 +332,7 @@
     "method": "POST",
     "sortNum": 0,
     "created": "2024-09-25T14:00:55.404Z",
-    "modified": "2024-10-01T15:12:03.158Z",
+    "modified": "2024-10-03T02:36:41.361Z",
     "headers": [],
     "params": [],
     "body": {
@@ -359,8 +359,7 @@
         },
         {
           "name": "debug",
-          "value": "1",
-          "isDisabled": true
+          "value": "1"
         }
       ],
       "files": [
