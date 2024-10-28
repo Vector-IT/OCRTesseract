@@ -288,5 +288,54 @@
       ]
     },
     "tests": []
+  },
+  {
+    "_id": "433c57f2-f872-4ece-b7d5-5d0d056461f9",
+    "colId": "bfc368ae-64f7-47af-8d85-6b2fef7429e5",
+    "containerId": "",
+    "name": "DAMSP2 - Desarrollo",
+    "url": "https://desarrollo.vector-it.com.ar/VectorPDF/damsp2.php",
+    "method": "POST",
+    "sortNum": 14687.5,
+    "created": "2024-10-28T12:30:17.136Z",
+    "modified": "2024-10-28T13:07:26.946Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "formdata",
+      "raw": "",
+      "form": [
+        {
+          "name": "language",
+          "value": "por",
+          "isDisabled": true
+        },
+        {
+          "name": "preserve_spaces",
+          "value": "0",
+          "isDisabled": true
+        },
+        {
+          "name": "page_segmentation",
+          "value": "3"
+        },
+        {
+          "name": "resolution",
+          "value": "155"
+        },
+        {
+          "name": "debug",
+          "value": "1",
+          "isDisabled": true
+        }
+      ],
+      "files": [
+        {
+          "name": "file",
+          "value": "..\\files\\DAMSP\\EXITO\\001-DAMSP_ISS_02-TRIM 2024.pdf"
+        }
+      ]
+    },
+    "tests": []
   }
 ]
