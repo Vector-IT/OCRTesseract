@@ -1,0 +1,17 @@
+{
+	"manifest_version": 3,
+	"name": "VectorPDF Extension",
+	"version": "1.0",
+	"description": "Una extensión de Chrome que se comunica con VectorPDF",
+	"action": {
+	  "default_popup": "popup.html",
+	  "default_icon": {
+		"16": "vPDF_16.png",
+		"48": "vPDF_48.png",
+		"128": "vPDF_128.png"
+	  }
+	},
+	"permissions": ["storage", "activeTab", "scripting"],
+	"host_permissions": ["https://notebook.vector-it.com.ar/*"]
+  }
+  

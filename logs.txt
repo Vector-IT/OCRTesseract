@@ -370,3 +370,23 @@
 [2024-10-28 10:04:54] IP: 127.0.0.1 | Params: {"page_segmentation":"3","resolution":"155"} | Response: {"file":"477.pdf","timeConversion":"1.589secs","timeReading":"2.062secs","timeModeling":"0.005secs","totalTime":"3.656secs"}
 [2024-10-28 10:07:26] IP: 127.0.0.1 | Params: {"page_segmentation":"3","resolution":"155"} | Response: {"file":"001-DAMSP_ISS_02-TRIM 2024.pdf","timeConversion":"1.887secs","timeReading":"1.744secs","timeModeling":"0.006secs","totalTime":"3.637secs"}
 [2024-10-28 10:08:49] IP: 127.0.0.1 | Params: {"page_segmentation":"3","resolution":"155"} | Response: {"file":"001-DAMSP_ISS_02-TRIM 2024.pdf","timeConversion":"1.983secs","timeReading":"1.775secs","timeModeling":"0.006secs","totalTime":"3.764secs"}
+[2024-10-29 16:10:16] IP: 127.0.0.1 | Params: [] | Response: {"file":"447.PDF","timeConversion":"13.558secs","timeReading":"3.499secs","timeModeling":"0.042secs","totalTime":"17.099secs"}
+[2024-10-29 16:18:15] IP: 127.0.0.1 | Params: [] | Response: {"file":"447.PDF","timeConversion":"12.367secs","timeReading":"2.978secs","timeModeling":"0.025secs","totalTime":"15.37secs"}
+[2024-10-29 16:22:32] IP: 127.0.0.1 | Params: [] | Response: {"file":"DAMSP_45950083_202110.PDF","timeConversion":"13.505secs","timeReading":"2.694secs","timeModeling":"0.014secs","totalTime":"16.213secs"}
+[2024-10-29 16:43:00] IP: 127.0.0.1 | Params: [] | Response: {"file":"477.pdf","timeConversion":"15.487secs","timeReading":"3.873secs","timeModeling":"0.022secs","totalTime":"19.382secs"}
+[2024-10-29 16:44:42] IP: 127.0.0.1 | Params: [] | Response: {"file":"383.PDF","timeConversion":"13.503secs","timeReading":"2.713secs","timeModeling":"0.001secs","totalTime":"16.217secs"}
+[2024-10-29 16:45:46] IP: 127.0.0.1 | Params: [] | Response: {"file":"383.PDF","timeConversion":"20.998secs","timeReading":"3.089secs","timeModeling":"0secs","totalTime":"24.087secs"}
+[2024-10-29 16:45:48] IP: 127.0.0.1 | Params: [] | Response: {"file":"383.PDF","timeConversion":"15.152secs","timeReading":"2.878secs","timeModeling":"0.001secs","totalTime":"18.031secs"}
+[2024-10-29 16:48:23] IP: 127.0.0.1 | Params: [] | Response: {"file":"383.PDF","timeConversion":"13.427secs","timeReading":"2.968secs","timeModeling":"0.001secs","totalTime":"16.396secs"}
+[2024-10-29 16:49:21] IP: 127.0.0.1 | Params: [] | Response: {"file":"383.PDF","timeConversion":"13.791secs","timeReading":"2.895secs","timeModeling":"0secs","totalTime":"16.686secs"}
+[2024-10-29 16:50:20] IP: 127.0.0.1 | Params: [] | Response: {"file":"1122 PRESTSOFT ISS 092023.pdf","timeConversion":"13.481secs","timeReading":"2.976secs","timeModeling":"0.023secs","totalTime":"16.48secs"}
+[2024-10-29 16:52:35] IP: 127.0.0.1 | Params: [] | Response: {"file":"447.PDF","timeConversion":"13.757secs","timeReading":"2.884secs","timeModeling":"0.031secs","totalTime":"16.672secs"}
+[2024-10-29 16:59:31] IP: 127.0.0.1 | Params: [] | Response: {"file":"383.PDF","timeConversion":"12.598secs","timeReading":"5.562secs","timeModeling":"0.001secs","totalTime":"18.161secs"}
+[2024-10-29 17:02:00] IP: 127.0.0.1 | Params: [] | Response: {"file":"447.PDF","timeConversion":"0.949secs","timeReading":"0.991secs","timeModeling":"0.006secs","totalTime":"1.946secs"}
+[2024-10-29 17:02:38] IP: 127.0.0.1 | Params: [] | Response: {"file":"447.PDF","timeConversion":"1.083secs","timeReading":"1.052secs","timeModeling":"0.005secs","totalTime":"2.14secs"}
+[2024-10-29 17:53:59] IP: 127.0.0.1 | Params: [] | Response: {"file":"447.PDF","timeConversion":"0.964secs","timeReading":"0.996secs","timeModeling":"0.005secs","totalTime":"1.965secs"}
+[2024-10-29 17:55:45] IP: 127.0.0.1 | Params: {"page_segmentation":"3","resolution":"155"} | Response: {"file":"477.pdf","timeConversion":"1.02secs","timeReading":"1.205secs","timeModeling":"0.02secs","totalTime":"2.245secs"}
+[2024-10-30 00:19:34] IP: 127.0.0.1 | Params: [] | Response: {"file":"447.PDF","timeConversion":"1.01secs","timeReading":"1.024secs","timeModeling":"0.018secs","totalTime":"2.052secs"}
+[2024-10-30 00:20:34] IP: 127.0.0.1 | Params: [] | Response: {"file":"383 KFF ISS.pdf","timeConversion":"1.113secs","timeReading":"1.055secs","timeModeling":"0.004secs","totalTime":"2.172secs"}
+[2024-10-30 00:21:54] IP: 127.0.0.1 | Params: [] | Response: {"file":"383 KFF ISS.pdf","timeConversion":"0.93secs","timeReading":"1.072secs","timeModeling":"0.004secs","totalTime":"2.006secs"}
+[2024-10-30 00:22:45] IP: 127.0.0.1 | Params: [] | Response: {"file":"383 KFF ISS.pdf","timeConversion":"1.01secs","timeReading":"1.085secs","timeModeling":"0.005secs","totalTime":"2.1secs"}

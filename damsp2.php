@@ -4,11 +4,14 @@ use setasign\Fpdi\Fpdi;
 
 header('Content-Type: application/json');
 header('Application: Vector PDF Reader');
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: POST");
+header("Access-Control-Allow-Headers: Content-Type, Authorization");
 
 define('default_lang', 'por');
 define('default_preserve_spaces', 0);
 define('default_page_segmentation', 3);
-define('default_resolution', 500);
+define('default_resolution', 155);
 
 // Verifica si es un POST y si hay archivos en la petición
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
@@ -259,6 +262,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
 						else {
 							$response['status'] = 'success';
 
+							$archivoPDF = 'processed/'.basename($uploadFile);
+							
 							require_once 'fpdf/fpdf.php';
 							// require_once 'fpdi/autoload.php';
 
@@ -274,15 +279,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
 							// $pdf->SetTextColor(0, 0, 0);
 							$pdf->SetTextColor(255, 255, 255);
 
-							$pdf->SetY(1);
+							$pdf->SetXY(0, 1);
 							$pdf->Write(0, 'damsp');
-							$pdf->SetY(2);
+							$pdf->SetXY(0, 2);
 							$pdf->Write(0, trim($response['cpf_cnpj']));
-							$pdf->SetY(3);
+							$pdf->SetXY(0, 3);
 							$pdf->Write(0, trim($response['period']));
 
 							$pdf->Image($archivo, 5, 5, 200, 0, 'JPG');
-							$pdf->Output('F', basename($uploadFile).'_prueba.'.$extension, 'F');
+							$pdf->Output('F', $archivoPDF);
+							$response['pdf_file'] = $archivoPDF;
 						}
 					}
 					else {
