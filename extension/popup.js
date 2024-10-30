@@ -36,11 +36,11 @@ fileInput.addEventListener("change", () => {
 
 // Función para enviar el archivo a la API
 function enviarArchivo(archivo) {
-	const url = "http://notebook.vector-it.com.ar/VectorPDF/damsp2.php";
+	const url = "https://desarrollo.vector-it.com.ar/VectorPDF/damsp2.php";
 	const formData = new FormData();
 	formData.append("file", archivo);
 
-	dropZone.innerHTML = '<img src="loading3.gif" style="height: 100%;">';
+	dropZone.innerHTML = '<img src="./loading4.gif" style="height: 100%;">';
 	fetch(url, {
 		method: "POST",
 		body: formData,
@@ -51,21 +51,28 @@ function enviarArchivo(archivo) {
 		.then(response => response.json())
 		.then(data => {
 			if (data.status === 'success') {
-				resultado.innerHTML = "<h3>Success</h3>";
-				resultado.innerHTML += "<strong>File:</strong> " + data.file;
-				resultado.innerHTML += "<br><strong>Type:</strong> " + data.type;
-				resultado.innerHTML += "<br><strong>CNPJ:</strong> " + data.cpf_cnpj;
-				resultado.innerHTML += "<br><strong>Date:</strong> " + data.period;
+				resultado.innerHTML =  '<h3>Success</h3>';
+				resultado.innerHTML += '<strong>File:</strong> ' + data.file;
+				resultado.innerHTML += '<br><strong>Type:</strong> ' + data.type;
+				resultado.innerHTML += '<br><strong>CNPJ:</strong> ' + data.cpf_cnpj;
+				resultado.innerHTML += '<br><strong>Date:</strong> ' + data.period;
+				resultado.innerHTML += '<br><a href="' + data.pdf_file + '" download>Download PDF</a>';
 
-				downloadPDF(data.pdf_file);
+				// downloadPDF(data.pdf_file);
 			}
 			else {
 				resultado.innerHTML = "<h3>Error</h3>";
 				resultado.innerHTML += "<strong>" + data.status + "</strong>";
 			}
+			
+			resultado.innerHTML += ' <a href="#" id="restart" style="float: right;">Restart</a>';
+
+			document.getElementById('restart').addEventListener('click', () => {
+				restart();
+			});
 			console.log("Respuesta de la API:", data);
 
-			dropZone.remove();
+			dropZone.classList.add('hide');
 		})
 		.catch(error => {
 			resultado.innerText = "Error al enviar el archivo";
@@ -94,4 +101,10 @@ function downloadPDF(pdfURL) {
 
 	// Remove the link from the DOM
 	document.body.removeChild(link);
+} 
+
+function restart() {
+	resultado.innerHTML = '';
+	dropZone.innerHTML = 'Suelta el archivo aquí';
+	dropZone.classList.remove('hide');
 }

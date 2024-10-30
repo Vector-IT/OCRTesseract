@@ -4,8 +4,9 @@ use setasign\Fpdi\Fpdi;
 
 header('Content-Type: application/json');
 header('Application: Vector PDF Reader');
-header("Access-Control-Allow-Origin: *");
-header("Access-Control-Allow-Methods: POST");
+// TODO: en donde esta el * poner el id de la extension
+header("Access-Control-Allow-Origin: chrome-extension://lefnjbeapnpjlfkeiddcgkickklkbgni");
+header("Access-Control-Allow-Methods: POST, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type, Authorization");
 
 define('default_lang', 'por');
@@ -133,7 +134,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
 					// READ DATA
 					// Array de arrays con el numero de linea y la posicion de inicio
 					define('iDAMSP', [3, 4, 2, 1]);
-					define('iCNPJ' , [7, 16, 8, 6, 9]);
+					define('iCNPJ' , [7, 16, 8, 6, 9, 10]);
 					define('iPeriod', [6, 7, 8, 14, 16]);
 					
 					// Check if the file is a DAMSP
