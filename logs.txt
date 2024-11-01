@@ -414,3 +414,34 @@
 [2024-10-30 09:48:15] IP: 127.0.0.1 | Params: [] | Response: {"file":"447.PDF","timeConversion":"1.532secs","timeReading":"1.746secs","timeModeling":"0.005secs","totalTime":"3.283secs"}
 [2024-10-30 09:49:12] IP: 127.0.0.1 | Params: [] | Response: {"file":"447.PDF","timeConversion":"1.893secs","timeReading":"1.999secs","timeModeling":"0.007secs","totalTime":"3.899secs"}
 [2024-10-30 09:50:44] IP: 127.0.0.1 | Params: [] | Response: {"file":"ISS (1).pdf","timeConversion":"1.998secs","timeReading":"2.348secs","timeModeling":"0.008secs","totalTime":"4.354secs"}
+[2024-11-01 09:23:16] IP: 127.0.0.1 | Params: [] | Response: {"file":"DAMSP_35425032_202309.PDF","timeConversion":"2.075secs","timeReading":"2.302secs","timeModeling":"0.018secs","totalTime":"4.395secs"}
+[2024-11-01 09:24:32] IP: 127.0.0.1 | Params: [] | Response: {"file":"DAMSP_35425032_202309.PDF","timeConversion":"1.58secs","timeReading":"1.773secs","timeModeling":"0.005secs","totalTime":"3.358secs"}
+[2024-11-01 09:24:47] IP: 127.0.0.1 | Params: [] | Response: {"file":"DAMSP_35425032_202309.PDF","timeConversion":"1.769secs","timeReading":"2.03secs","timeModeling":"0.006secs","totalTime":"3.805secs"}
+[2024-11-01 09:25:43] IP: 127.0.0.1 | Params: [] | Response: {"file":"DAMSP_35425032_202309.PDF","timeConversion":"1.769secs","timeReading":"2.317secs","timeModeling":"0.008secs","totalTime":"4.094secs"}
+[2024-11-01 09:27:51] IP: 127.0.0.1 | Params: [] | Response: {"file":"DAMSP_35425032_202309.PDF","timeConversion":"2.001secs","timeReading":"1.957secs","timeModeling":"0.005secs","totalTime":"3.963secs"}
+[2024-11-01 09:29:19] IP: 127.0.0.1 | Params: [] | Response: {"file":"DAMSP_35425032_202309.PDF","timeConversion":"1.516secs","timeReading":"1.774secs","timeModeling":"0.005secs","totalTime":"3.295secs"}
+[2024-11-01 09:33:37] IP: 127.0.0.1 | Params: [] | Response: {"file":"DAMSP_35425032_202309.PDF","timeConversion":"1.907secs","timeReading":"1.954secs","timeModeling":"0.005secs","totalTime":"3.866secs"}
+[2024-11-01 09:35:03] IP: 127.0.0.1 | Params: [] | Response: {"file":"DAMSP - 10.2023.pdf","timeConversion":"1.654secs","timeReading":"1.835secs","timeModeling":"0.006secs","totalTime":"3.495secs"}
+[2024-11-01 11:38:50] IP: 127.0.0.1 | Params: [] | Response: {"file":"DAMSP_35425032_202309.PDF","timeConversion":"1.623secs","timeReading":"1.779secs","timeModeling":"0.006secs","totalTime":"3.408secs"}
+[2024-11-01 11:44:13] IP: 127.0.0.1 | Params: [] | Response: {"file":"DAMSP_35425032_202309.PDF","timeConversion":"1.669secs","timeReading":"1.786secs","timeModeling":"0.006secs","totalTime":"3.461secs"}
+[2024-11-01 11:47:12] IP: 127.0.0.1 | Params: [] | Response: {"file":"DAMSP_35425032_202309.PDF","timeConversion":"1.636secs","timeReading":"1.955secs","timeModeling":"0.005secs","totalTime":"3.596secs"}
+[2024-11-01 11:52:25] IP: 127.0.0.1 | Params: [] | Response: {"file":"DAMSP_35425032_202309.PDF","timeConversion":"1.713secs","timeReading":"1.936secs","timeModeling":"0.005secs","totalTime":"3.654secs"}
+[2024-11-01 11:57:51] IP: 127.0.0.1 | Params: [] | Response: {"file":"DAMSP_31870198_202407.PDF","timeConversion":"2.132secs","timeReading":"2.044secs","timeModeling":"0.005secs","totalTime":"4.181secs"}
+[2024-11-01 12:00:11] IP: 127.0.0.1 | Params: [] | Response: {"file":"DAMSP_31870198_202407.PDF","timeConversion":"1.605secs","timeReading":"1.728secs","timeModeling":"0.005secs","totalTime":"3.338secs"}
+[2024-11-01 12:00:46] IP: 127.0.0.1 | Params: [] | Response: {"file":"DAMSP - 10.2023.pdf","timeConversion":"1.738secs","timeReading":"1.818secs","timeModeling":"0.006secs","totalTime":"3.562secs"}
+[2024-11-01 12:01:52] IP: 127.0.0.1 | Params: [] | Response: {"file":"DAMSP - 10.2023.pdf","timeConversion":"1.754secs","timeReading":"1.974secs","timeModeling":"0.005secs","totalTime":"3.733secs"}
+[2024-11-01 12:04:04] IP: 127.0.0.1 | Params: [] | Response: {"file":"DAMSP - 10.2023.pdf","timeConversion":"2.029secs","timeReading":"2.166secs","timeModeling":"0.006secs","totalTime":"4.201secs"}
+[2024-11-01 12:06:31] IP: 127.0.0.1 | Params: [] | Response: {"file":"DAMSP - 10.2023.pdf","timeConversion":"1.5secs","timeReading":"1.789secs","timeModeling":"0.004secs","totalTime":"3.293secs"}
+[2024-11-01 12:08:33] IP: 127.0.0.1 | Params: [] | Response: {"file":"DAMSP - 10.2023.pdf","timeConversion":"1.531secs","timeReading":"1.713secs","timeModeling":"0.005secs","totalTime":"3.249secs"}
+[2024-11-01 12:10:11] IP: 127.0.0.1 | Params: [] | Response: {"file":"DAMSP - 10.2023.pdf","timeConversion":"1.532secs","timeReading":"1.716secs","timeModeling":"0.005secs","totalTime":"3.253secs"}
+[2024-11-01 12:11:43] IP: 127.0.0.1 | Params: [] | Response: {"file":"anexo sem valida\u00e7\u00e3oIG4_DAMSP ISS_JUNHO 2022 (PAULO MATTOS).pdf","timeConversion":"1.638secs","timeReading":"1.877secs","timeModeling":"0.006secs","totalTime":"3.521secs"}
+[2024-11-01 12:12:36] IP: 127.0.0.1 | Params: [] | Response: {"file":"DAMSP_45950083_202110.PDF","timeConversion":"1.533secs","timeReading":"1.668secs","timeModeling":"0secs","totalTime":"3.201secs"}
+[2024-11-01 12:12:45] IP: 127.0.0.1 | Params: [] | Response: {"file":"DAMSP - 10.2023.pdf","timeConversion":"1.535secs","timeReading":"1.713secs","timeModeling":"0.006secs","totalTime":"3.254secs"}
+[2024-11-01 12:12:57] IP: 127.0.0.1 | Params: [] | Response: {"file":"IG4_DAMSP ISS_MAR\u00c7O 2022 (PAULO MATTOS).pdf","timeConversion":"1.595secs","timeReading":"1.94secs","timeModeling":"0.017secs","totalTime":"3.552secs"}
+[2024-11-01 12:44:19] IP: 127.0.0.1 | Params: [] | Response: {"file":"DAMSP - 10.2023.pdf","timeConversion":"1.755secs","timeReading":"1.713secs","timeModeling":"0.006secs","totalTime":"3.474secs"}
+[2024-11-01 12:44:56] IP: 127.0.0.1 | Params: [] | Response: {"file":"DAMSP - 10.2023.pdf","timeConversion":"1.516secs","timeReading":"1.744secs","timeModeling":"0.005secs","totalTime":"3.265secs"}
+[2024-11-01 12:48:39] IP: 127.0.0.1 | Params: [] | Response: {"file":"DAMSP - 10.2023.pdf","timeConversion":"1.517secs","timeReading":"1.714secs","timeModeling":"0.005secs","totalTime":"3.236secs"}
+[2024-11-01 12:49:22] IP: 127.0.0.1 | Params: [] | Response: {"file":"DAMSP - 10.2023.pdf","timeConversion":"1.608secs","timeReading":"1.818secs","timeModeling":"0.005secs","totalTime":"3.431secs"}
+[2024-11-01 12:51:27] IP: 127.0.0.1 | Params: [] | Response: {"file":"DAMSP - 10.2023.pdf","timeConversion":"1.5secs","timeReading":"1.743secs","timeModeling":"0.005secs","totalTime":"3.248secs"}
+[2024-11-01 12:51:38] IP: 127.0.0.1 | Params: [] | Response: {"file":"DAMSP - 10.2023.pdf","timeConversion":"1.549secs","timeReading":"1.776secs","timeModeling":"0.006secs","totalTime":"3.331secs"}
+[2024-11-01 12:52:44] IP: 127.0.0.1 | Params: [] | Response: {"file":"2024.03.11 - Marv Com\u00e9rcio - DAMSP ISS Prestados 02.2024.pdf","timeConversion":"1.593secs","timeReading":"1.882secs","timeModeling":"0.006secs","totalTime":"3.481secs"}

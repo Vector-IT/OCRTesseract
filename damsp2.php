@@ -5,7 +5,8 @@ use setasign\Fpdi\Fpdi;
 header('Content-Type: application/json');
 header('Application: Vector PDF Reader');
 // TODO: en donde esta el * poner el id de la extension
-header("Access-Control-Allow-Origin: chrome-extension://lefnjbeapnpjlfkeiddcgkickklkbgni");
+// header("Access-Control-Allow-Origin: chrome-extension://lefnjbeapnpjlfkeiddcgkickklkbgni");
+header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: POST, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type, Authorization");
 

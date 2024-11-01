@@ -2,6 +2,13 @@ const dropZone = document.getElementById("drop-zone");
 const resultado = document.getElementById("resultado");
 const fileInput = document.getElementById("file-input");
 
+// document.addEventListener("DOMContentLoaded", () => {
+// 	// Código que deseas ejecutar al cargar el popup
+// 	chrome.storage.sync.get('carpetaDescargas').then(function (result) { 
+// 		document.getElementById("folder-input").value = result.carpetaDescargas; 
+// 	});
+// });
+
 // Estilo al arrastrar
 dropZone.addEventListener("dragover", (e) => {
 	e.preventDefault();
@@ -36,12 +43,12 @@ fileInput.addEventListener("change", () => {
 
 // Función para enviar el archivo a la API
 function enviarArchivo(archivo) {
-	const url = "https://desarrollo.vector-it.com.ar/VectorPDF/damsp2.php";
+	const url = "https://desarrollo.vector-it.com.ar/VectorPDF/";
 	const formData = new FormData();
 	formData.append("file", archivo);
 
 	dropZone.innerHTML = '<img src="./loading4.gif" style="height: 100%;">';
-	fetch(url, {
+	fetch(url + 'damsp2.php', {
 		method: "POST",
 		body: formData,
 		headers: {
@@ -52,21 +59,25 @@ function enviarArchivo(archivo) {
 		.then(data => {
 			if (data.status === 'success') {
 				resultado.innerHTML =  '<h3>Success</h3>';
-				resultado.innerHTML += '<strong>File:</strong> ' + data.file;
-				resultado.innerHTML += '<br><strong>Type:</strong> ' + data.type;
-				resultado.innerHTML += '<br><strong>CNPJ:</strong> ' + data.cpf_cnpj;
-				resultado.innerHTML += '<br><strong>Date:</strong> ' + data.period;
-				resultado.innerHTML += '<br><a href="' + data.pdf_file + '" download>Download PDF</a>';
+				resultado.innerHTML += '<div><strong>File:</strong> ' + data.file + '</div>';
+				resultado.innerHTML += '<div><strong>Type:</strong> ' + data.type + '</div>';
+				resultado.innerHTML += '<div><strong>CNPJ:</strong> ' + data.cpf_cnpj + '</div>';
+				resultado.innerHTML += '<div><strong>Date:</strong> ' + data.period + '</div>';
+				resultado.innerHTML += '<div><a id="linkDownload" href="' + url + data.pdf_file + '" download="' + data.period + '/' + data.type + '/' + data.pdf_file.substring(data.pdf_file.lastIndexOf('/') + 1) + '">Download PDF</a><a href="#" id="restart" style="float: right;">Restart</a></div>';
 
-				// downloadPDF(data.pdf_file);
+				// document.getElementById('linkDownload').addEventListener('click', () => {
+				// 	downloadPDF(this.dataset.url, this.dataset.filename);
+				// });
+
+				downloadPDF(url + data.pdf_file, data.period + '/' + data.type + '/' + data.pdf_file.substring(data.pdf_file.lastIndexOf('/') + 1));
 			}
 			else {
 				resultado.innerHTML = "<h3>Error</h3>";
-				resultado.innerHTML += "<strong>" + data.status + "</strong>";
+				resultado.innerHTML += "<div><strong>" + data.status + "</strong></div>";
+				resultado.innerHTML += '<div><a href="#" id="restart" style="float: right;">Restart</a></div>';
+
 			}
 			
-			resultado.innerHTML += ' <a href="#" id="restart" style="float: right;">Restart</a>';
-
 			document.getElementById('restart').addEventListener('click', () => {
 				restart();
 			});
@@ -82,25 +93,18 @@ function enviarArchivo(archivo) {
 		});
 }
 
-function downloadPDF(pdfURL) {
-	// Create an invisible anchor element
-	const link = document.createElement('a');
-
-	// Set the href attribute to the PDF URL
-	link.href = pdfURL;
-
-	// Set the download attribute with the desired file name
-	link.download = "";
-	// link.download = pdfURL.substring(pdfURL.lastIndexOf('/') + 1);
-
-	// Append the link to the body
-	document.body.appendChild(link);
-
-	// Programmatically click the link to trigger the download
-	link.click();
-
-	// Remove the link from the DOM
-	document.body.removeChild(link);
+function downloadPDF(pdfURL, filename) {
+	chrome.downloads.download({
+		url: pdfURL,
+		filename: filename,
+		conflictAction: "overwrite"
+	}, function (downloadId) {
+		if (chrome.runtime.lastError) {
+			console.error("Error al descargar:", chrome.runtime.lastError.message);
+		} else {
+			console.log("Descarga iniciada con ID:", downloadId);
+		}
+	});
 } 
 
 function restart() {
