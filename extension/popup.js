@@ -69,7 +69,11 @@ function enviarArchivo(archivo) {
 				// 	downloadPDF(this.dataset.url, this.dataset.filename);
 				// });
 
-				downloadPDF(url + data.pdf_file, data.period + '/' + data.type + '/' + data.pdf_file.substring(data.pdf_file.lastIndexOf('/') + 1));
+				// get all string after /
+				const anio = data.period.substring(data.period.lastIndexOf('/') + 1);
+				const mes = data.period.substring(0, data.period.lastIndexOf('/'));
+				 
+				downloadPDF(url + data.pdf_file, anio + '/' + mes + '/' + data.type + '/' + data.pdf_file.substring(data.pdf_file.lastIndexOf('/') + 1));
 			}
 			else {
 				resultado.innerHTML = "<h3>Error</h3>";
