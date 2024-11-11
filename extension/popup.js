@@ -1,6 +1,7 @@
 const dropZone = document.getElementById("drop-zone");
 const resultado = document.getElementById("resultado");
 const fileInput = document.getElementById("file-input");
+const chkDropZone = document.getElementById("chkDropZone");
 
 // document.addEventListener("DOMContentLoaded", () => {
 // 	// Código que deseas ejecutar al cargar el popup
@@ -39,6 +40,23 @@ fileInput.addEventListener("change", () => {
 	if (archivo) {
 		enviarArchivo(archivo);
 	}
+});
+
+chkDropZone.addEventListener("change", () => {
+	chrome.storage.local.set({ DropZone_Activated: chkDropZone.checked });
+});
+
+// On document ready
+document.addEventListener("DOMContentLoaded", () => {
+	// chrome storage read
+	chrome.storage.local.get(["DropZone_Activated"], (result) => {
+		if (result.DropZone_Activated) {
+			chkDropZone.checked = true;
+		}
+		else {
+			chkDropZone.checked = false;
+		}
+	});
 });
 
 // Función para enviar el archivo a la API

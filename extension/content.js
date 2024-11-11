@@ -47,7 +47,11 @@ document.body.appendChild(overlay);
 // Mostrar la ventana emergente cuando el usuario arrastra un archivo
 window.addEventListener("dragenter", (event) => {
 	if (event.dataTransfer.types.includes("Files")) {
-		overlay.style.display = "flex";
+		chrome.storage.local.get(["DropZone_Activated"], (result) => {
+			if (result.DropZone_Activated) {
+				overlay.style.display = "flex";
+			}
+		});
 	}
 });
 
