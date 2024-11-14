@@ -136,7 +136,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
 					// Array de arrays con el numero de linea y la posicion de inicio
 					define('iDAMSP', [3, 4, 2, 1]);
 					define('iCNPJ' , [7, 16, 8, 6, 9, 10]);
-					define('iPeriod', [6, 7, 8, 14, 16]);
+					define('iPeriod', [6, 7, 8, 9, 14, 16]);
 					
 					// Check if the file is a DAMSP
 					$blnDAMSP = false;
