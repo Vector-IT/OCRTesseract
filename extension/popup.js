@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Función para enviar el archivo a la API
 function enviarArchivo(archivo) {
-	const url = "https://desarrollo.vector-it.com.ar/VectorPDF/";
+	const url = "https://vectorpdf.vector-it.com.ar/";
 	const formData = new FormData();
 	formData.append("file", archivo);
 

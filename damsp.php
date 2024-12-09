@@ -5,7 +5,7 @@ header('Application: Vector PDF Reader');
 define('default_lang', 'por');
 define('default_preserve_spaces', 0);
 define('default_page_segmentation', 3);
-define('default_resolution', 500);
+define('default_resolution', 170);
 
 // Verifica si es un POST y si hay archivos en la petición
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
@@ -126,9 +126,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
 
 					// READ DATA
 					// Array de arrays con el numero de linea y la posicion de inicio
-					define('iDAMSP', [3, 4, 2, 1]);
-					define('iCNPJ' , [7, 16, 8, 6, 9]);
-					define('iPeriod', [6, 7, 8, 14, 16]);
+					define('iDAMSP', [3, 4, 2, 1, 5]);
+					define('iCNPJ' , [5, 6, 7, 16, 8, 9, 14]);
+					define('iPeriod', [5, 10, 12, 6, 7, 8, 14, 16, 11, 9]);
+					define('iPeriodSep', ['/', '-', 'I', '[']);
 					
 					// Check if the file is a DAMSP
 					$blnDAMSP = false;
@@ -193,7 +194,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
 							
 							do {
 								$iBarraOld = $iBarra;
-								$iBarra = strpos($output[iPeriod[$i]], '/', $iBarraOld + 1);
+
+								// Buscar separador
+								foreach (iPeriodSep as $separador) {
+									$iBarra = strpos($output[iPeriod[$i]], $separador, $iBarraOld + 1);
+									
+									if ($iBarra !== false) {
+										break;
+									}
+								}
 
 								$iSpaceBegin = strrpos(substr($output[iPeriod[$i]], 0, $iBarra - 1), ' ');
 
@@ -382,7 +391,7 @@ function validateCPF(string $cpf): bool {
 	return preg_replace('#\d{9}(\d{2})$#', '$1', $cpf) == $moduloA . $moduloB;
 }
 
-function validateDate($dateString, $formats = ['M/Y', 'M/y']): bool {
+function validateDate(&$dateString, $formats = ['M/Y', 'M/y']): bool {
 	$meses = [
 		[1, "JANEIRO", "JAN", "JANUARY", "JAN"],
 		[2, "FEVEREIRO", "FEV", "FEBRUARY", "FEB"],
@@ -401,36 +410,49 @@ function validateDate($dateString, $formats = ['M/Y', 'M/y']): bool {
 	$valMes = false;
 	$valAno = false;
 	
-	// Controlar mes
-	$mes = strtoupper(substr($dateString, 0, strpos($dateString, "/")));
-
-	foreach($meses as $arrayMes) {
-		if(in_array($mes, $arrayMes)) {
-			$valMes = true;
+	// Buscar separador
+	foreach (iPeriodSep as $separador) {
+		$iBarra = strpos($dateString, $separador);
+		if ($iBarra !== false) {
+			$dateString = str_replace($separador, iPeriodSep[0], $dateString);
 			break;
 		}
 	}
 
-	// Controlar año
-	$ano = substr($dateString, strpos($dateString, "/") + 1);
+	// Controlar mes
+	if ($iBarra !== false) {
+		$mes = strtoupper(substr($dateString, 0, $iBarra));
 
-	if (is_numeric($ano)) {
-		if (strlen($ano) == 2) {
-			if ($ano > 0 && $ano < 100) {
-				$valAno = true;
+		foreach($meses as $arrayMes) {
+			if(in_array($mes, $arrayMes)) {
+				$valMes = true;
+				break;
 			}
 		}
-		elseif (strlen($ano) == 4) {
-			if ($ano > 1900 && $ano < 2100) {
-				$valAno = true;
+
+		// Controlar año
+		$ano = substr($dateString, strpos($dateString, "/") + 1);
+
+		if (is_numeric($ano)) {
+			if (strlen($ano) == 2) {
+				if ($ano > 0 && $ano < 100) {
+					$valAno = true;
+				}
+			}
+			elseif (strlen($ano) == 4) {
+				if ($ano > 1900 && $ano < 2100) {
+					$valAno = true;
+				}
+			}
+			else {
+				$valAno = false;
 			}
 		}
-		else {
-			$valAno = false;
-		}
+
+		return $valMes && $valAno;
 	}
 
-	return $valMes && $valAno;
+	return false;
 }
 
 function validateDate1($dateString, $formats = ['M/Y', 'M/y'], $locale = 'pt_BR'): bool {

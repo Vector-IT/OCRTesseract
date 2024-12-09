@@ -466,3 +466,15 @@
 [2024-11-14 09:44:23] IP: 127.0.0.1 | Params: [] | Response: {"file":"DAMSP_45950083_202110.PDF","timeConversion":"1.593secs","timeReading":"1.684secs","timeModeling":"0secs","totalTime":"3.277secs"}
 [2024-11-14 09:46:18] IP: 127.0.0.1 | Params: [] | Response: {"file":"DAMSP_45950083_202110.PDF","timeConversion":"1.562secs","timeReading":"1.774secs","timeModeling":"76.254secs","totalTime":"79.59secs"}
 [2024-11-14 09:46:51] IP: 201.92.217.171 | Params: [] | Response: {"file":"DAMSP_45950083_202110.PDF","timeConversion":"1.411secs","timeReading":"1.626secs","timeModeling":"0.015secs","totalTime":"3.052secs"}
+[2024-11-19 15:15:52] IP: 201.92.217.171 | Params: [] | Response: {"file":"DAMSP_45950083_202110.PDF","timeConversion":"2.606secs","timeReading":"2.405secs","timeModeling":"0.127secs","totalTime":"5.138secs"}
+[2024-12-02 12:51:52] IP: 177.45.71.139 | Params: [] | Response: {"file":"OPY_DAMSP ISS RETIDO_DEZEMBRO 2021.pdf","timeConversion":"2.94secs","timeReading":"3.336secs","timeModeling":"0.162secs","totalTime":"6.438secs"}
+[2024-12-09 10:34:39] IP: 127.0.0.1 | Params: {"debug":"1"} | Response: {"file":"383.PDF","timeConversion":"2.075secs","timeReading":"2.414secs","timeModeling":"0.005secs","totalTime":"4.494secs"}
+[2024-12-09 10:38:48] IP: 127.0.0.1 | Params: {"debug":"1"} | Response: {"file":"383.PDF","timeConversion":"1.823secs","timeReading":"1.836secs","timeModeling":"207.55secs","totalTime":"211.209secs"}
+[2024-12-09 10:38:58] IP: 127.0.0.1 | Params: {"debug":"1"} | Response: {"file":"383.PDF","timeConversion":"1.816secs","timeReading":"2.136secs","timeModeling":"3.116secs","totalTime":"7.068secs"}
+[2024-12-09 10:39:20] IP: 127.0.0.1 | Params: {"debug":"1"} | Response: {"file":"383.PDF","timeConversion":"1.69secs","timeReading":"1.841secs","timeModeling":"0.001secs","totalTime":"3.532secs"}
+[2024-12-09 10:51:58] IP: 127.0.0.1 | Params: {"debug":"1"} | Response: {"file":"383.PDF","timeConversion":"1.884secs","timeReading":"1.944secs","timeModeling":"88.787secs","totalTime":"92.615secs"}
+[2024-12-09 10:52:06] IP: 127.0.0.1 | Params: {"debug":"1"} | Response: {"file":"383.PDF","timeConversion":"1.828secs","timeReading":"2.006secs","timeModeling":"0secs","totalTime":"3.834secs"}
+[2024-12-09 10:54:00] IP: 127.0.0.1 | Params: {"debug":"1"} | Response: {"file":"383.PDF","timeConversion":"2.015secs","timeReading":"1.807secs","timeModeling":"15.105secs","totalTime":"18.927secs"}
+[2024-12-09 10:55:45] IP: 127.0.0.1 | Params: {"debug":"1"} | Response: {"file":"383.PDF","timeConversion":"2.066secs","timeReading":"1.774secs","timeModeling":"83.87secs","totalTime":"87.71secs"}
+[2024-12-09 10:55:54] IP: 127.0.0.1 | Params: {"debug":"1"} | Response: {"file":"383.PDF","timeConversion":"1.732secs","timeReading":"2.036secs","timeModeling":"2.484secs","totalTime":"6.252secs"}
+[2024-12-09 10:59:43] IP: 127.0.0.1 | Params: {"debug":"1"} | Response: {"file":"383.PDF","timeConversion":"1.973secs","timeReading":"1.811secs","timeModeling":"0secs","totalTime":"3.784secs"}
