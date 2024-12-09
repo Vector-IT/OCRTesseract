@@ -5,7 +5,7 @@ header('Application: Vector PDF Reader');
 define('default_lang', 'por');
 define('default_preserve_spaces', 0);
 define('default_page_segmentation', 3);
-define('default_resolution', 170);
+define('default_resolution', 160);
 
 // Verifica si es un POST y si hay archivos en la petición
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
@@ -129,7 +129,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
 					define('iDAMSP', [3, 4, 2, 1, 5]);
 					define('iCNPJ' , [5, 6, 7, 16, 8, 9, 14]);
 					define('iPeriod', [5, 10, 12, 6, 7, 8, 14, 16, 11, 9]);
-					define('iPeriodSep', ['/', '-', 'I', '[']);
+					define('iPeriodSep', ['/', '-', 'I', '[', '#']);
 					
 					// Check if the file is a DAMSP
 					$blnDAMSP = false;
@@ -264,6 +264,34 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
 						}
 						else {
 							$response['status'] = 'success';
+
+							// Si la llamada viene de la extension
+							if (isset($_POST['extension'])) {
+								// Creo el directorio si no existe
+								if (!file_exists('processed') && !is_dir('processed')) {
+									mkdir('processed');
+								}
+								$archivoPDF = 'processed/'.basename($uploadFile);
+							
+								require_once 'fpdf/fpdf.php';
+
+								$pdf = new FPDF();
+								$pdf->AddPage();
+
+								$pdf->SetFont('Arial', '', 1);
+								$pdf->SetTextColor(255, 255, 255);
+
+								$pdf->SetXY(0, 1);
+								$pdf->Write(0, 'damsp');
+								$pdf->SetXY(0, 2);
+								$pdf->Write(0, trim($response['cpf_cnpj']));
+								$pdf->SetXY(0, 3);
+								$pdf->Write(0, trim($response['period']));
+
+								$pdf->Image($archivo, 5, 5, 200, 0, 'JPG');
+								$pdf->Output('F', $archivoPDF);
+								$response['pdf_file'] = $archivoPDF;
+							}
 						}
 					}
 					else {

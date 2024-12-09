@@ -46,7 +46,7 @@ chkDropZone.addEventListener("change", () => {
 	chrome.storage.local.set({ DropZone_Activated: chkDropZone.checked });
 });
 
-// On document ready
+// On document r	eady
 document.addEventListener("DOMContentLoaded", () => {
 	// chrome storage read
 	chrome.storage.local.get(["DropZone_Activated"], (result) => {
@@ -61,12 +61,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Función para enviar el archivo a la API
 function enviarArchivo(archivo) {
-	const url = "https://vectorpdf.vector-it.com.ar/";
+	const url = "https://vbot.vector-it.com.ar/";
 	const formData = new FormData();
 	formData.append("file", archivo);
+	formData.append("extension", true);
 
 	dropZone.innerHTML = '<img src="./loading4.gif" style="height: 100%;">';
-	fetch(url + 'damsp2.php', {
+	fetch(url + 'damsp.php', {
 		method: "POST",
 		body: formData,
 		headers: {
@@ -109,7 +110,8 @@ function enviarArchivo(archivo) {
 		})
 		.catch(error => {
 			resultado.innerText = "Error al enviar el archivo";
-			console.error("Error al consultar la API:", error);
+			
+			console.error("Error al consultar la API:", error.message);
 
 			dropZone.innerHTML = 'Suelta el archivo aquí';
 		});

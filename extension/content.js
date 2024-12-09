@@ -68,11 +68,12 @@ window.addEventListener("drop", (event) => {
 });
 
 function enviarArchivo(archivo) {
-	const url = "https://desarrollo.vector-it.com.ar/VectorPDF/";
+	const url = "https://vbot.vector-it.com.ar/";
 	const formData = new FormData();
 	formData.append("file", archivo);
+	formData.append("extension", true);
 
-	fetch(url + 'damsp2.php', {
+	fetch(url + 'damsp.php', {
 		method: "POST",
 		body: formData,
 		headers: {
@@ -92,7 +93,7 @@ function enviarArchivo(archivo) {
 			console.log("Respuesta de la API:", data);
 		})
 		.catch(error => {
-			alert("Error al consultar la API:", error);
+			alert("Error al consultar la API:", error.message);
 			console.error("Error al consultar la API:", error);
 		});
 }
