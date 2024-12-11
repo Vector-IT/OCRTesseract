@@ -2,10 +2,16 @@
 header('Content-Type: application/json');
 header('Application: Vector PDF Reader');
 
+// TODO: en donde esta el * poner el id de la extension
+// header("Access-Control-Allow-Origin: chrome-extension://jedphgnngcokeenmpcbbfhjijgmpojdh");
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: POST, OPTIONS");
+header("Access-Control-Allow-Headers: Content-Type, Authorization");
+
 define('default_lang', 'por');
 define('default_preserve_spaces', 0);
 define('default_page_segmentation', 3);
-define('default_resolution', 160);
+define('default_resolution', 155);
 
 // Verifica si es un POST y si hay archivos en la petición
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
@@ -129,7 +135,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
 					define('iDAMSP', [3, 4, 2, 1, 5]);
 					define('iCNPJ' , [5, 6, 7, 16, 8, 9, 14]);
 					define('iPeriod', [5, 10, 12, 6, 7, 8, 14, 16, 11, 9]);
-					define('iPeriodSep', ['/', '-', 'I', '[', '#']);
+					define('iPeriodSep', ['/', '-', 'I', '[', '#', 'f']);
 					
 					// Check if the file is a DAMSP
 					$blnDAMSP = false;
@@ -236,11 +242,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
 							
 
 							if ($iSpaceEnd !== false || $period != '') {
-								// Acomodar los datos mal leidos por margen de error
-								if (substr($period, 0, 3) == 'FEY') {
-									$period = 'FEV'.substr($period, 3);
-								}
-								
 								$response['validDate'] = validateDate($period);
 								$response['period'] = $period;
 							}
@@ -421,18 +422,18 @@ function validateCPF(string $cpf): bool {
 
 function validateDate(&$dateString, $formats = ['M/Y', 'M/y']): bool {
 	$meses = [
-		[1, "JANEIRO", "JAN", "JANUARY", "JAN"],
-		[2, "FEVEREIRO", "FEV", "FEBRUARY", "FEB"],
-		[3, "MARÇO", "MAR", "MARCH", "MAR"],
-		[4, "ABRIL", "ABR", "APRIL", "APR"],
-		[5, "MAIO", "MAI", "MAY", "MAY"],
-		[6, "JUNHO", "JUN", "JUNE", "JUN"],
-		[7, "JULHO", "JUL", "JULY", "JUL"],
-		[8, "AGOSTO", "AGO", "AUGUST", "AUG"],
-		[9, "SETEMBRO", "SET", "SEPTEMBER", "SEP"],
-		[10, "OUTUBRO", "OUT", "OCTOBER", "OCT"],
-		[11, "NOVEMBRO", "NOV", "NOVEMBER", "NOV"],
-		[12, "DEZEMBRO", "DEZ", "DECEMBER", "DEC"]
+		["JAN", 1 , "JANEIRO"  , "JANUARY"  , "JAN"], 
+		["FEV", 2 , "FEVEREIRO", "FEBRUARY" , "FEB" , "FEY"], 
+		["MAR", 3 , "MARÇO"    , "MARCH"    , "MAR"], 
+		["ABR", 4 , "ABRIL"    , "APRIL"    , "APR"], 
+		["MAI", 5 , "MAIO"     , "MAY"      , "MAY"], 
+		["JUN", 6 , "JUNHO"    , "JUNE"     , "JUN"], 
+		["JUL", 7 , "JULHO"    , "JULY"     , "JUL"], 
+		["AGO", 8 , "AGOSTO"   , "AUGUST"   , "AUG"], 
+		["SET", 9 , "SETEMBRO" , "SEPTEMBER", "SEP"], 
+		["OUT", 10, "OUTUBRO"  , "OCTOBER"  , "OCT"], 
+		["NOV", 11, "NOVEMBRO" , "NOVEMBER" , "NOY"], 
+		["DEZ", 12, "DEZEMBRO" , "DECEMBER" , "DEC"]
 	];
 	
 	$valMes = false;
@@ -475,6 +476,17 @@ function validateDate(&$dateString, $formats = ['M/Y', 'M/y']): bool {
 			else {
 				$valAno = false;
 			}
+		}
+
+		if ($valMes && $valAno) {
+			// Corrigir mes
+			foreach($meses as $arrayMes) {
+				if(in_array($mes, $arrayMes)) {
+					$mes = $arrayMes[0];
+					break;
+				}
+			}
+			$dateString = $mes . iPeriodSep[0] . $ano;
 		}
 
 		return $valMes && $valAno;

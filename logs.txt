@@ -478,3 +478,7 @@
 [2024-12-09 10:55:45] IP: 127.0.0.1 | Params: {"debug":"1"} | Response: {"file":"383.PDF","timeConversion":"2.066secs","timeReading":"1.774secs","timeModeling":"83.87secs","totalTime":"87.71secs"}
 [2024-12-09 10:55:54] IP: 127.0.0.1 | Params: {"debug":"1"} | Response: {"file":"383.PDF","timeConversion":"1.732secs","timeReading":"2.036secs","timeModeling":"2.484secs","totalTime":"6.252secs"}
 [2024-12-09 10:59:43] IP: 127.0.0.1 | Params: {"debug":"1"} | Response: {"file":"383.PDF","timeConversion":"1.973secs","timeReading":"1.811secs","timeModeling":"0secs","totalTime":"3.784secs"}
+[2024-12-11 08:58:04] IP: 127.0.0.1 | Params: {"debug":"1"} | Response: {"file":"Guia ISS 112024_ServiAos Prestados_Vencimento 10122024.pdf","timeConversion":"2.345secs","timeReading":"2.71secs","timeModeling":"0.007secs","totalTime":"5.062secs"}
+[2024-12-11 09:06:56] IP: 127.0.0.1 | Params: {"debug":"1"} | Response: {"file":"Guia ISS 112024_ServiAos Prestados_Vencimento 10122024.pdf","timeConversion":"1.904secs","timeReading":"2.289secs","timeModeling":"249.323secs","totalTime":"253.516secs"}
+[2024-12-11 09:07:03] IP: 127.0.0.1 | Params: {"debug":"1"} | Response: {"file":"Guia ISS 112024_ServiAos Prestados_Vencimento 10122024.pdf","timeConversion":"1.812secs","timeReading":"2.409secs","timeModeling":"0secs","totalTime":"4.221secs"}
+[2024-12-11 13:14:44] IP: 127.0.0.1 | Params: {"debug":"1"} | Response: {"file":"ISS (1).pdf","timeConversion":"2.295secs","timeReading":"2.524secs","timeModeling":"0.004secs","totalTime":"4.823secs"}

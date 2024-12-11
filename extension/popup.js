@@ -66,7 +66,7 @@ function enviarArchivo(archivo) {
 	formData.append("file", archivo);
 	formData.append("extension", true);
 
-	dropZone.innerHTML = '<img src="./loading4.gif" style="height: 100%;">';
+	dropZone.innerHTML = '<img src="./loading.gif" style="height: 100%;">';
 	fetch(url + 'damsp.php', {
 		method: "POST",
 		body: formData,
@@ -92,7 +92,7 @@ function enviarArchivo(archivo) {
 				const anio = data.period.substring(data.period.lastIndexOf('/') + 1);
 				const mes = data.period.substring(0, data.period.lastIndexOf('/'));
 				 
-				downloadPDF(url + data.pdf_file, anio + '/' + mes + '/' + data.type + '/' + data.pdf_file.substring(data.pdf_file.lastIndexOf('/') + 1));
+				downloadPDF(url + data.pdf_file, data.pdf_file.substring(data.pdf_file.lastIndexOf('/') + 1));
 			}
 			else {
 				resultado.innerHTML = "<h3>Error</h3>";

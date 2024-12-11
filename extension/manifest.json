@@ -17,10 +17,6 @@
 	  }
 	},
 	"permissions": ["storage", "activeTab", "scripting", "downloads"],
-	"host_permissions": [
-		"https://notebook.vector-it.com.ar/*",
-		"https://desarrollo.vector-it.com.ar/*"
-	],
 	"content_scripts": [
 		{
 			"matches": ["<all_urls>"],
