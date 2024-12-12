@@ -135,7 +135,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
 					define('iDAMSP', [3, 4, 2, 1, 5]);
 					define('iCNPJ' , [5, 6, 7, 16, 8, 9, 14]);
 					define('iPeriod', [5, 10, 12, 6, 7, 8, 14, 16, 11, 9]);
-					define('iPeriodSep', ['/', '-', 'I', '[', '#', 'f']);
+					define('iPeriodSep', ['-', '/', 'I', '[', '#', 'f']);
 					
 					// Check if the file is a DAMSP
 					$blnDAMSP = false;
@@ -194,6 +194,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
 						#endregion
 
 						#region Get Period
+						$blnValidDate = false;
+
 						for ($i = 0; $i < count(iPeriod); $i++) {
 							$period = '';
 							$iBarra = 0;
@@ -233,16 +235,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
 									$period = str_replace(' ', '', $period);
 
 									if (validateDate($period)) {
-										$iSpaceEnd = false;
+										$blnValidDate = true;
 									}
 
 								} while ($iSpaceEnd !== false);
 								
-							} while (!validateDate($period) && $iBarra !== false);
+							} while (!$blnValidDate && $iBarra !== false);
 							
 
 							if ($iSpaceEnd !== false || $period != '') {
-								$response['validDate'] = validateDate($period);
+								$response['validDate'] = $blnValidDate;
 								$response['period'] = $period;
 							}
 							else {
@@ -460,16 +462,16 @@ function validateDate(&$dateString, $formats = ['M/Y', 'M/y']): bool {
 		}
 
 		// Controlar año
-		$ano = substr($dateString, strpos($dateString, "/") + 1);
+		$anio = substr($dateString, strpos($dateString, iPeriodSep[0]) + 1);
 
-		if (is_numeric($ano)) {
-			if (strlen($ano) == 2) {
-				if ($ano > 0 && $ano < 100) {
+		if (is_numeric($anio)) {
+			if (strlen($anio) == 2) {
+				if ($anio > 0 && $anio < 100) {
 					$valAno = true;
 				}
 			}
-			elseif (strlen($ano) == 4) {
-				if ($ano > 1900 && $ano < 2100) {
+			elseif (strlen($anio) == 4) {
+				if ($anio > 1900 && $anio < 2100) {
 					$valAno = true;
 				}
 			}
@@ -486,7 +488,7 @@ function validateDate(&$dateString, $formats = ['M/Y', 'M/y']): bool {
 					break;
 				}
 			}
-			$dateString = $mes . iPeriodSep[0] . $ano;
+			$dateString = $anio . iPeriodSep[0] . $mes;
 		}
 
 		return $valMes && $valAno;

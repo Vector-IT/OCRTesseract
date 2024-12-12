@@ -20,7 +20,7 @@ overlay.style.display = "none"; // Inicia como oculto
 const imgDiv = document.createElement("div");
 const textDiv = document.createElement("div");
 
-imgDiv.innerHTML = "<img src='https://desarrollo.vector-it.com.ar/VectorPDF/extension/icon128.png'>";
+imgDiv.innerHTML = "<img src='https://vbot.vector-it.com.ar/img/icon128.png'>";
 textDiv.textContent = "Suelta el archivo para procesarlo con la extensión";
 
 overlay.appendChild(imgDiv);

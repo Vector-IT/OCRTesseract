@@ -482,3 +482,10 @@
 [2024-12-11 09:06:56] IP: 127.0.0.1 | Params: {"debug":"1"} | Response: {"file":"Guia ISS 112024_ServiAos Prestados_Vencimento 10122024.pdf","timeConversion":"1.904secs","timeReading":"2.289secs","timeModeling":"249.323secs","totalTime":"253.516secs"}
 [2024-12-11 09:07:03] IP: 127.0.0.1 | Params: {"debug":"1"} | Response: {"file":"Guia ISS 112024_ServiAos Prestados_Vencimento 10122024.pdf","timeConversion":"1.812secs","timeReading":"2.409secs","timeModeling":"0secs","totalTime":"4.221secs"}
 [2024-12-11 13:14:44] IP: 127.0.0.1 | Params: {"debug":"1"} | Response: {"file":"ISS (1).pdf","timeConversion":"2.295secs","timeReading":"2.524secs","timeModeling":"0.004secs","totalTime":"4.823secs"}
+[2024-12-12 12:30:18] IP: 127.0.0.1 | Params: [] | Response: {"file":"447.PDF","timeConversion":"1.453secs","timeReading":"1.579secs","timeModeling":"0.003secs","totalTime":"3.035secs"}
+[2024-12-12 12:30:27] IP: 127.0.0.1 | Params: {"debug":"1"} | Response: {"file":"447.PDF","timeConversion":"1.047secs","timeReading":"1.092secs","timeModeling":"0secs","totalTime":"2.139secs"}
+[2024-12-12 12:34:04] IP: 127.0.0.1 | Params: {"debug":"1"} | Response: {"file":"447.PDF","timeConversion":"1.124secs","timeReading":"1.332secs","timeModeling":"68.277secs","totalTime":"70.733secs"}
+[2024-12-12 12:34:59] IP: 127.0.0.1 | Params: {"debug":"1"} | Response: {"file":"447.PDF","timeConversion":"1.119secs","timeReading":"1.336secs","timeModeling":"46.083secs","totalTime":"48.538secs"}
+[2024-12-12 12:37:30] IP: 127.0.0.1 | Params: {"debug":"1"} | Response: {"file":"447.PDF","timeConversion":"1.079secs","timeReading":"1.545secs","timeModeling":"0secs","totalTime":"2.624secs"}
+[2024-12-12 12:40:39] IP: 127.0.0.1 | Params: {"debug":"1"} | Response: {"file":"447.PDF","timeConversion":"1.083secs","timeReading":"1.106secs","timeModeling":"0secs","totalTime":"2.189secs"}
+[2024-12-12 12:41:27] IP: 127.0.0.1 | Params: {"debug":"1"} | Response: {"file":"447.PDF","timeConversion":"1.02secs","timeReading":"1.058secs","timeModeling":"2.016secs","totalTime":"4.094secs"}
