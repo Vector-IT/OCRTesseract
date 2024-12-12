@@ -424,18 +424,18 @@ function validateCPF(string $cpf): bool {
 
 function validateDate(&$dateString, $formats = ['M/Y', 'M/y']): bool {
 	$meses = [
-		["JAN", 1 , "JANEIRO"  , "JANUARY"  , "JAN"], 
-		["FEV", 2 , "FEVEREIRO", "FEBRUARY" , "FEB" , "FEY"], 
-		["MAR", 3 , "MARÇO"    , "MARCH"    , "MAR"], 
-		["ABR", 4 , "ABRIL"    , "APRIL"    , "APR"], 
-		["MAI", 5 , "MAIO"     , "MAY"      , "MAY"], 
-		["JUN", 6 , "JUNHO"    , "JUNE"     , "JUN"], 
-		["JUL", 7 , "JULHO"    , "JULY"     , "JUL"], 
-		["AGO", 8 , "AGOSTO"   , "AUGUST"   , "AUG"], 
-		["SET", 9 , "SETEMBRO" , "SEPTEMBER", "SEP"], 
-		["OUT", 10, "OUTUBRO"  , "OCTOBER"  , "OCT"], 
-		["NOV", 11, "NOVEMBRO" , "NOVEMBER" , "NOY"], 
-		["DEZ", 12, "DEZEMBRO" , "DECEMBER" , "DEC"]
+		["01", "JAN", 1 , "JANEIRO"  , "JANUARY"  , "JAN"], 
+		["02", "FEV", 2 , "FEVEREIRO", "FEBRUARY" , "FEB" , "FEY"], 
+		["03", "MAR", 3 , "MARÇO"    , "MARCH"    , "MAR"], 
+		["04", "ABR", 4 , "ABRIL"    , "APRIL"    , "APR"], 
+		["05", "MAI", 5 , "MAIO"     , "MAY"      , "MAY"], 
+		["06", "JUN", 6 , "JUNHO"    , "JUNE"     , "JUN"], 
+		["07", "JUL", 7 , "JULHO"    , "JULY"     , "JUL"], 
+		["08", "AGO", 8 , "AGOSTO"   , "AUGUST"   , "AUG"], 
+		["09", "SET", 9 , "SETEMBRO" , "SEPTEMBER", "SEP"], 
+		["10", "OUT", 10, "OUTUBRO"  , "OCTOBER"  , "OCT"], 
+		["11", "NOV", 11, "NOVEMBRO" , "NOVEMBER" , "NOY"], 
+		["12", "DEZ", 12, "DEZEMBRO" , "DECEMBER" , "DEC"]
 	];
 	
 	$valMes = false;
