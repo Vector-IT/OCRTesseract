@@ -6,8 +6,17 @@
 	<title>txtReader</title>
 </head>
 <body>
+    <form method="post" enctype="multipart/form-data">
+        Choose Your File
+        <input type="file" name="file" />
+        <br>
+        <input type="submit" value="Read PDF" name="readpdf" />
+    </form>
+
 <?php
- 
+ini_set('log_errors', 'on');
+ini_set('error_log', 'php_errors.log');
+
 require('class.pdf2text.php');
 extract($_POST);
 
@@ -33,13 +42,6 @@ if(isset($readpdf)){
     }
 }    
 ?>
-
-    <form method="post" enctype="multipart/form-data">
-        Choose Your File
-        <input type="file" name="file" />
-        <br>
-        <input type="submit" value="Read PDF" name="readpdf" />
-    </form>
 </body>
 
 </html>

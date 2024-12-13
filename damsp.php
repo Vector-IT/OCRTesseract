@@ -285,11 +285,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
 								$pdf->SetTextColor(255, 255, 255);
 
 								$pdf->SetXY(0, 1);
-								$pdf->Write(0, 'damsp');
-								$pdf->SetXY(0, 2);
-								$pdf->Write(0, trim($response['cpf_cnpj']));
-								$pdf->SetXY(0, 3);
-								$pdf->Write(0, trim($response['period']));
+								$pdf->MultiCell(0, 1, "damsp\n{$response['cpf_cnpj']}\n{$response['period']}");
+								// $pdf->Write(0, 'damsp'.PHP_EOL);
+								// $pdf->SetXY(0, 2);
+								// $pdf->Write(0, trim($response['cpf_cnpj']).PHP_EOL);
+								// $pdf->SetXY(0, 3);
+								// $pdf->Write(0, trim($response['period']).PHP_EOL);
 
 								$pdf->Image($archivo, 5, 5, 200, 0, 'JPG');
 								$pdf->Output('F', $archivoPDF);

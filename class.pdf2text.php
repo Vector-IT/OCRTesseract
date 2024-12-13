@@ -19,6 +19,7 @@ http://www.webcheatsheet.com/php/reading_clean_text_from_pdf.php
 AUTHOR:
 - Webcheatsheet.com (Original code)
 - Joeri Stegeman (joeri210 [at] yahoo [dot] com) (Class conversion and fixes/adjustments)
+- Jose Romero (jose [dot] romero [at] vector [hyphen] it [dot] com [dot] com) (fixes/adjustments)
 
 DESCRIPTION:
 This is a class to convert PDF files into ASCII text or so called PDF text extraction.
@@ -107,8 +108,13 @@ class PDF2Text {
 	                if (preg_match_all("#BT[\n|\r](.*)ET[\n|\r]#ismU", $data, $textContainers)) {
 						$textContainers = @$textContainers[1]; 
 						$this->getDirtyTexts($texts, $textContainers); 
-					} else 
+					} 
+					elseif (preg_match_all("#BT(.*)ET#ismU", $data, $textContainers)) {
+						$textContainers = @$textContainers[1]; 
+						$this->getDirtyTexts($texts, $textContainers); 
+					} else {
 						$this->getCharTransformations($transformations, $data); 
+					}
 				} 
 			} 
 		} 
@@ -274,6 +280,8 @@ class PDF2Text {
 			if (preg_match_all("#\[(.*)\]\s*TJ[\n|\r]#ismU", $textContainers[$j], $parts))
 				$texts = array_merge($texts, @$parts[1]);
 			elseif(preg_match_all("#T[d|w|m|f]\s*(\(.*\))\s*Tj[\n|\r]#ismU", $textContainers[$j], $parts))
+				$texts = array_merge($texts, @$parts[1]);
+			elseif(preg_match_all("#T[dwfm]\s*(\(.*?\))\s*Tj#ismU", $textContainers[$j], $parts))
 				$texts = array_merge($texts, @$parts[1]);
 			elseif(preg_match_all("#T[d|w|m|f]\s*(\[.*\])\s*Tj[\n|\r]#ismU", $textContainers[$j], $parts))
 				$texts = array_merge($texts, @$parts[1]);

@@ -491,3 +491,54 @@
 [2024-12-12 12:41:27] IP: 127.0.0.1 | Params: {"debug":"1"} | Response: {"file":"447.PDF","timeConversion":"1.02secs","timeReading":"1.058secs","timeModeling":"2.016secs","totalTime":"4.094secs"}
 [2024-12-12 13:35:47] IP: 127.0.0.1 | Params: {"debug":"1"} | Response: {"file":"447.PDF","timeConversion":"1.446secs","timeReading":"2.274secs","timeModeling":"0.004secs","totalTime":"3.724secs"}
 [2024-12-12 13:36:48] IP: 127.0.0.1 | Params: [] | Response: {"file":"447.PDF","timeConversion":"1.012secs","timeReading":"1.213secs","timeModeling":"0secs","totalTime":"2.225secs"}
+[2024-12-12 23:27:45] IP: 127.0.0.1 | Params: {"page_segmentation":"3","resolution":"155","debug":"1"} | Response: {"file":"1122 PRESTSOFT ISS 092023.pdf","timeConversion":"1.745secs","timeReading":"2.253secs","timeModeling":"0secs","totalTime":"3.998secs"}
+[2024-12-12 23:29:16] IP: 127.0.0.1 | Params: {"page_segmentation":"3","resolution":"155","debug":"1"} | Response: {"file":"1122 PRESTSOFT ISS 092023.pdf","timeConversion":"1.983secs","timeReading":"2.181secs","timeModeling":"0secs","totalTime":"4.164secs"}
+[2024-12-12 23:33:47] IP: 127.0.0.1 | Params: {"page_segmentation":"3","resolution":"155","debug":"1"} | Response: {"file":"ISS (1).pdf","timeConversion":"2.09secs","timeReading":"2.407secs","timeModeling":"0secs","totalTime":"4.497secs"}
+[2024-12-12 23:34:12] IP: 127.0.0.1 | Params: {"page_segmentation":"3","resolution":"155","debug":"0"} | Response: {"file":"ISS (1).pdf","timeConversion":"1.771secs","timeReading":"2.166secs","timeModeling":"0secs","totalTime":"3.937secs"}
+[2024-12-12 23:34:31] IP: 127.0.0.1 | Params: {"page_segmentation":"3","resolution":"155","debug":"1"} | Response: {"file":"ISS (1).pdf","timeConversion":"1.938secs","timeReading":"2.527secs","timeModeling":"0.001secs","totalTime":"4.466secs"}
+[2024-12-12 23:35:20] TXTReader / IP: 127.0.0.1 | Response: 0.436
+[2024-12-12 23:35:52] TXTReader / IP: 127.0.0.1 | Response: 0.421
+[2024-12-12 23:35:54] TXTReader / IP: 127.0.0.1 | Response: 0.442
+[2024-12-12 23:36:31] TXTReader / IP: 127.0.0.1 | Response: 0.001
+[2024-12-12 23:37:14] TXTReader / IP: 127.0.0.1 | Response: 13.657
+[2024-12-12 23:37:41] TXTReader / IP: 127.0.0.1 | Response: 6.726
+[2024-12-12 23:39:25] TXTReader / IP: 127.0.0.1 | Response: 0.008
+[2024-12-12 23:40:17] TXTReader / IP: 127.0.0.1 | Response: 0.011
+[2024-12-12 23:40:51] TXTReader / IP: 127.0.0.1 | Response: 9.664
+[2024-12-12 23:42:41] TXTReader2 / IP: 127.0.0.1 | Response: 0.022
+[2024-12-12 23:43:03] TXTReader2 / IP: 127.0.0.1 | Response: 0.02
+[2024-12-12 23:47:40] TXTReader2 / IP: 127.0.0.1 | Response: 0.001
+[2024-12-12 23:48:16] TXTReader2 / IP: 127.0.0.1 | Response: 31.467
+[2024-12-12 23:48:20] TXTReader2 / IP: 127.0.0.1 | Response: 0.009
+[2024-12-12 23:48:50] TXTReader2 / IP: 127.0.0.1 | Response: 0.004
+[2024-12-12 23:49:22] TXTReader / IP: 127.0.0.1 | Response: 0.005
+[2024-12-12 23:50:12] TXTReader / IP: 127.0.0.1 | Response: 0.449
+[2024-12-12 23:50:51] TXTReader2 / IP: 127.0.0.1 | Response: 0.002
+[2024-12-12 23:56:45] TXTReader / IP: 127.0.0.1 | Response: 0.004
+[2024-12-13 00:02:56] TXTReader / IP: 127.0.0.1 | Response: 212.361
+[2024-12-13 00:10:42] TXTReader2 / IP: 127.0.0.1 | Response: 0.005
+[2024-12-13 00:17:27] TXTReader2 / IP: 127.0.0.1 | Response: 16.888
+[2024-12-13 00:23:27] TXTReader2 / IP: 127.0.0.1 | Response: 167.856
+[2024-12-13 00:24:27] TXTReader2 / IP: 127.0.0.1 | Response: 56.454
+[2024-12-13 00:30:26] TXTReader2 / IP: 127.0.0.1 | Response: 67.966
+[2024-12-13 00:31:04] TXTReader2 / IP: 127.0.0.1 | Response: 26.885
+[2024-12-13 00:35:04] TXTReader / IP: 127.0.0.1 | Response: 222.192
+[2024-12-13 00:35:09] TXTReader / IP: 127.0.0.1 | Response: 1.63
+[2024-12-13 00:42:32] TXTReader / IP: 127.0.0.1 | Response: 228.515
+[2024-12-13 00:43:09] TXTReader2 / IP: 127.0.0.1 | Response: 0.005
+[2024-12-13 00:44:28] TXTReader2 / IP: 127.0.0.1 | Response: 68.041
+[2024-12-13 00:46:45] TXTReader / IP: 127.0.0.1 | Response: 124.454
+[2024-12-13 00:55:57] TXTReader / IP: 127.0.0.1 | Response: 44.654
+[2024-12-13 00:58:52] TXTReader / IP: 127.0.0.1 | Response: 169.086
+[2024-12-13 00:59:12] TXTReader / IP: 127.0.0.1 | Response: 16.466
+[2024-12-13 01:01:50] TXTReader / IP: 127.0.0.1 | Response: 152.178
+[2024-12-13 01:02:14] TXTReader / IP: 127.0.0.1 | Response: 9.806
+[2024-12-13 01:03:55] TXTReader / IP: 127.0.0.1 | Response: 93.9
+[2024-12-13 01:04:29] TXTReader / IP: 127.0.0.1 | Response: 20.951
+[2024-12-13 01:06:12] TXTReader / IP: 127.0.0.1 | Response: 92.903
+[2024-12-13 01:09:28] TXTReader / IP: 127.0.0.1 | Response: 8.679
+[2024-12-13 01:11:22] TXTReader / IP: 127.0.0.1 | Response: 87.314
+[2024-12-13 01:11:41] TXTReader / IP: 127.0.0.1 | Response: 0.443
+[2024-12-13 01:11:57] TXTReader / IP: 127.0.0.1 | Response: 0.004
+[2024-12-13 01:23:05] TXTReader / IP: 127.0.0.1 | Response: 33.35
+[2024-12-13 01:24:11] TXTReader / IP: 127.0.0.1 | Response: 0.004
